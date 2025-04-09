@@ -12,6 +12,8 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "strUserFolder&StateMachine_1",
+        "strSQLFilePath&StateMachine_1",
         "browserDMS&StateMachine_1",
         "strDMSUsername&StateMachine_1",
         "strDMSPassword&StateMachine_1",
@@ -77,6 +79,10 @@
       "Path": "Process/Process Transaction.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "strExcelFilePath&Sequence_57",
+        "browserDMS&Flowchart_3",
+        "DMSUsername&Flowchart_3",
+        "strDMSPassword&Flowchart_3",
         "strAttachmentName&Sequence_124",
         "strRecievedDate&Sequence_124",
         "strDocumentDate&Sequence_124",
@@ -255,9 +261,6 @@
         "strSenderEmailAddress&Flowchart_3"
       ],
       "ArgumentsSectionElementsOrder": [
-        "out_browserDMS",
-        "out_DMSUsername",
-        "out_strDMSPassword",
         "in_windowORATS",
         "in_TransactionItem",
         "io_arrExitPoint",
@@ -327,6 +330,21 @@
         "in_strDMSUsername",
         "in_strDMSPassword",
         "io_Config"
+      ],
+      "ConstantsSectionElementsOrder": null,
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Framework/InitAllApplications.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "collProcesses&Sequence_9",
+        "boolORATSTab&Sequence_9",
+        "boolOutlookOpen&Sequence_15"
+      ],
+      "ArgumentsSectionElementsOrder": [
+        "io_Config",
+        "OUT_windowORATS"
       ],
       "ConstantsSectionElementsOrder": null,
       "AddedNamespaces": null

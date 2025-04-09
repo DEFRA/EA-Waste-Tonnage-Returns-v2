@@ -6,14 +6,11 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="io_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="io_arrCaseID" Type="InOutArgument(s:String[])" />
     <x:Property Name="in_windowORATS" Type="InArgument(ui:Window)" />
-    <x:Property Name="out_strDMSPassword" Type="OutArgument(ss:SecureString)" />
-    <x:Property Name="out_DMSUsername" Type="OutArgument(x:String)" />
-    <x:Property Name="out_browserDMS" Type="OutArgument(ui:Browser)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1245,939</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1229,939</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_Transaction_2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -62,6 +59,7 @@
       <x:String>UiPathTeam.SharePoint</x:String>
       <x:String>Microsoft.SharePoint.Client</x:String>
       <x:String>UiPathTeam.SharePoint.Activities</x:String>
+      <x:String>System.Globalization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -119,9 +117,9 @@
       <AssemblyReference>CredentialManagement</AssemblyReference>
       <AssemblyReference>UiPath.Credentials.Activities</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>Microsoft.SharePoint.Client.Runtime</AssemblyReference>
       <AssemblyReference>Microsoft.SharePoint.Client</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="634,713" sap2010:WorkflowViewState.IdRef="Flowchart_3">
@@ -131,6 +129,9 @@
       <Variable x:TypeArguments="x:String" Name="strWorkingDirectory" />
       <Variable x:TypeArguments="sd1:DataTable" Name="dtRevisedPermitNumbers" />
       <Variable x:TypeArguments="x:String" Name="strEmailReceivedDate" />
+      <Variable x:TypeArguments="ss:SecureString" Name="strDMSPassword" />
+      <Variable x:TypeArguments="x:String" Name="DMSUsername" />
+      <Variable x:TypeArguments="ui:Browser" Name="browserDMS" />
     </Flowchart.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -153,7 +154,7 @@
           <av:PointCollection x:Key="ConnectorLocation">300,210.5 300,260.5</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Get Email MetaData" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <Sequence DisplayName="Get Email MetaData" sap:VirtualizedContainerService.HintSize="1259,2350" sap2010:WorkflowViewState.IdRef="Sequence_4">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="strCurrentCaseSubject" />
         </Sequence.Variables>
@@ -176,6 +177,14 @@
           </Assign.To>
           <Assign.Value>
             <InArgument x:TypeArguments="x:String">[in_TransactionItem.Headers("Date").ToString]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <Assign sap:VirtualizedContainerService.HintSize="1197,83" sap2010:WorkflowViewState.IdRef="Assign_137">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[strEmailReceivedDate]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[DateTime.ParseExact(strEmailReceivedDate, "ddd, dd MMM yyyy HH:mm:ss zzz", System.Globalization.CultureInfo.InvariantCulture).ToString("dd/MM/yyyy")]</InArgument>
           </Assign.Value>
         </Assign>
         <Assign sap:VirtualizedContainerService.HintSize="1197,83" sap2010:WorkflowViewState.IdRef="Assign_5">
@@ -381,7 +390,7 @@
                   <av:Size x:Key="ShapeSize">200,53</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For each waste return in working directory" sap:VirtualizedContainerService.HintSize="970.5,1522.5" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[System.IO.Directory.GetFiles(strWorkingDirectory)]">
+              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For each waste return in working directory" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[System.IO.Directory.GetFiles(strWorkingDirectory)]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
@@ -395,8 +404,8 @@
                         <Flowchart DisplayName="Process &amp; Log Waste Return" sap:VirtualizedContainerService.HintSize="659,1233.5" sap2010:WorkflowViewState.IdRef="Flowchart_4">
                           <Flowchart.Variables>
                             <Variable x:TypeArguments="x:String" Name="strReturnPeriod" />
-                            <Variable x:TypeArguments="x:String" Name="strReturnPeriodYear" />
-                            <Variable x:TypeArguments="x:String" Name="strPermitNumber" />
+                            <Variable x:TypeArguments="ui:GenericValue" Name="strReturnPeriodYear" />
+                            <Variable x:TypeArguments="ui:GenericValue" Name="strPermitNumber" />
                             <Variable x:TypeArguments="x:String" Name="strDeclarationName" />
                             <Variable x:TypeArguments="ui:GenericValue" Name="genDeclarationDate" />
                             <Variable x:TypeArguments="x:String" Name="strPermitType" />
@@ -450,7 +459,7 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" DisplayName="Read Excel Waste Return" sap:VirtualizedContainerService.HintSize="683.5,681" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" WorkbookPath="[item.ToString]">
+                                  <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" AutoSave="False" DisplayName="Read Excel Waste Return" sap:VirtualizedContainerService.HintSize="683.5,681" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[item.ToString]">
                                     <ui:ExcelApplicationScope.Body>
                                       <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                         <ActivityAction.Argument>
@@ -470,12 +479,12 @@
                                           </ui:ExcelReadCell>
                                           <ui:ExcelReadCell Cell="D19" DisplayName="Read 'Return Period Year' Cell" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_8" SheetName="Site_Information">
                                             <ui:ExcelReadCell.Result>
-                                              <OutArgument x:TypeArguments="x:String">[strReturnPeriodYear]</OutArgument>
+                                              <OutArgument x:TypeArguments="ui:GenericValue">[strReturnPeriodYear]</OutArgument>
                                             </ui:ExcelReadCell.Result>
                                           </ui:ExcelReadCell>
                                           <ui:ExcelReadCell Cell="B26" DisplayName="Read 'Permit Number' Cell" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_9" SheetName="Site_Information">
                                             <ui:ExcelReadCell.Result>
-                                              <OutArgument x:TypeArguments="x:String">[strPermitNumber]</OutArgument>
+                                              <OutArgument x:TypeArguments="ui:GenericValue">[strPermitNumber]</OutArgument>
                                             </ui:ExcelReadCell.Result>
                                           </ui:ExcelReadCell>
                                           <ui:ExcelReadCell Cell="H40" DisplayName="Read 'Declaration Name' Cell" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="ExcelReadCell_10" SheetName="Site_Information">
@@ -629,6 +638,7 @@
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <av:Point x:Key="ShapeLocation">395,668.5</av:Point>
                                           <av:Size x:Key="ShapeSize">200,53</av:Size>
+                                          <av:PointCollection x:Key="ConnectorLocation">495,721.5 495,815 415,815</av:PointCollection>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                       <Assign DisplayName="Assign Declaration Name to NA" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Assign_73">
@@ -644,6 +654,9 @@
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
                                       </Assign>
+                                      <FlowStep.Next>
+                                        <x:Reference>__ReferenceID3</x:Reference>
+                                      </FlowStep.Next>
                                     </FlowStep>
                                     <FlowDecision x:Name="__ReferenceID14" Condition="[strDeclarationName IsNot Nothing]" DisplayName="Got Name?" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_9" True="{x:Reference __ReferenceID3}" False="{x:Reference __ReferenceID4}">
                                       <sap:WorkflowViewStateService.ViewState>
@@ -672,18 +685,10 @@
                                         </sap:WorkflowViewStateService.ViewState>
                                         <Assign DisplayName="Trim Permit Number" sap:VirtualizedContainerService.HintSize="1128,83" sap2010:WorkflowViewState.IdRef="Assign_38">
                                           <Assign.To>
-                                            <OutArgument x:TypeArguments="x:String">[strPermitNumber]</OutArgument>
+                                            <OutArgument x:TypeArguments="ui:GenericValue">[strPermitNumber]</OutArgument>
                                           </Assign.To>
                                           <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">[strPermitNumber.Trim]</InArgument>
-                                          </Assign.Value>
-                                        </Assign>
-                                        <Assign DisplayName="Remove Spaces From Permit Number" sap:VirtualizedContainerService.HintSize="1128,83" sap2010:WorkflowViewState.IdRef="Assign_39">
-                                          <Assign.To>
-                                            <OutArgument x:TypeArguments="x:String">[strPermitNumber]</OutArgument>
-                                          </Assign.To>
-                                          <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">[strPermitNumber.Replace(" ","")]</InArgument>
+                                            <InArgument x:TypeArguments="ui:GenericValue">[New UiPath.Core.GenericValue(strPermitNumber.ToString.Trim.Replace(" ", ""))]</InArgument>
                                           </Assign.Value>
                                         </Assign>
                                         <If Condition="[strPermitNumber.Contains(&quot;EPR&quot;) or strPermitNumber.Contains(&quot;EAWML&quot;) or strPermitNumber.Contains(&quot;WML&quot;) or strPermitNumber.Contains(&quot;A001&quot;)]" DisplayName="If permit number contains prefix EPR or EAWML or WML or A001" sap:VirtualizedContainerService.HintSize="1128,1235" sap2010:WorkflowViewState.IdRef="If_6">
@@ -696,34 +701,34 @@
                                               </sap:WorkflowViewStateService.ViewState>
                                               <Assign DisplayName="Remove EPR From Permit Number" sap:VirtualizedContainerService.HintSize="496,83" sap2010:WorkflowViewState.IdRef="Assign_40">
                                                 <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:String">[strPermitNumber]</OutArgument>
+                                                  <OutArgument x:TypeArguments="ui:GenericValue">[strPermitNumber]</OutArgument>
                                                 </Assign.To>
                                                 <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">[strPermitNumber.Replace("EPR","")]</InArgument>
+                                                  <InArgument x:TypeArguments="ui:GenericValue">[New UiPath.Core.GenericValue(strPermitNumber.ToString.Replace("EPR", ""))]</InArgument>
                                                 </Assign.Value>
                                               </Assign>
                                               <Assign DisplayName="Remove EAWML From Permit Number" sap:VirtualizedContainerService.HintSize="496,83" sap2010:WorkflowViewState.IdRef="Assign_41">
                                                 <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:String">[strPermitNumber]</OutArgument>
+                                                  <OutArgument x:TypeArguments="ui:GenericValue">[strPermitNumber]</OutArgument>
                                                 </Assign.To>
                                                 <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">[strPermitNumber.Replace("EAWML","")]</InArgument>
+                                                  <InArgument x:TypeArguments="ui:GenericValue">[New UiPath.Core.GenericValue(strPermitNumber.ToString.Replace("EAWML", ""))]</InArgument>
                                                 </Assign.Value>
                                               </Assign>
                                               <Assign DisplayName="Remove WML From Permit Number" sap:VirtualizedContainerService.HintSize="496,83" sap2010:WorkflowViewState.IdRef="Assign_42">
                                                 <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:String">[strPermitNumber]</OutArgument>
+                                                  <OutArgument x:TypeArguments="ui:GenericValue">[strPermitNumber]</OutArgument>
                                                 </Assign.To>
                                                 <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">[strPermitNumber.Replace("WML","")]</InArgument>
+                                                  <InArgument x:TypeArguments="ui:GenericValue">[New UiPath.Core.GenericValue(strPermitNumber.ToString.Replace("WML", ""))]</InArgument>
                                                 </Assign.Value>
                                               </Assign>
                                               <Assign DisplayName="Remove A001 From Permit Number" sap:VirtualizedContainerService.HintSize="496,83" sap2010:WorkflowViewState.IdRef="Assign_43">
                                                 <Assign.To>
-                                                  <OutArgument x:TypeArguments="x:String">[strPermitNumber]</OutArgument>
+                                                  <OutArgument x:TypeArguments="ui:GenericValue">[strPermitNumber]</OutArgument>
                                                 </Assign.To>
                                                 <Assign.Value>
-                                                  <InArgument x:TypeArguments="x:String">[strPermitNumber.Replace("A001","")]</InArgument>
+                                                  <InArgument x:TypeArguments="ui:GenericValue">[New UiPath.Core.GenericValue(strPermitNumber.ToString.Replace("A001", ""))]</InArgument>
                                                 </Assign.Value>
                                               </Assign>
                                               <Sequence DisplayName="Remove / Or \ Or -" sap:VirtualizedContainerService.HintSize="496,440" sap2010:WorkflowViewState.IdRef="Sequence_34">
@@ -735,26 +740,26 @@
                                                 </sap:WorkflowViewStateService.ViewState>
                                                 <Assign DisplayName="Remove / From Permit Number" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_44">
                                                   <Assign.To>
-                                                    <OutArgument x:TypeArguments="x:String">[strPermitNumber]</OutArgument>
+                                                    <OutArgument x:TypeArguments="ui:GenericValue">[strPermitNumber]</OutArgument>
                                                   </Assign.To>
                                                   <Assign.Value>
-                                                    <InArgument x:TypeArguments="x:String">[strPermitNumber.Replace("/","")]</InArgument>
+                                                    <InArgument x:TypeArguments="ui:GenericValue">[New UiPath.Core.GenericValue(strPermitNumber.ToString.Replace("/", ""))]</InArgument>
                                                   </Assign.Value>
                                                 </Assign>
                                                 <Assign DisplayName="Remove \ From Permit Number" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_45">
                                                   <Assign.To>
-                                                    <OutArgument x:TypeArguments="x:String">[strPermitNumber]</OutArgument>
+                                                    <OutArgument x:TypeArguments="ui:GenericValue">[strPermitNumber]</OutArgument>
                                                   </Assign.To>
                                                   <Assign.Value>
-                                                    <InArgument x:TypeArguments="x:String">[strPermitNumber.Replace("\","")]</InArgument>
+                                                    <InArgument x:TypeArguments="ui:GenericValue">[New UiPath.Core.GenericValue(strPermitNumber.ToString.Replace("\", ""))]</InArgument>
                                                   </Assign.Value>
                                                 </Assign>
                                                 <Assign DisplayName="Remove - From Permit Number" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_46">
                                                   <Assign.To>
-                                                    <OutArgument x:TypeArguments="x:String">[strPermitNumber]</OutArgument>
+                                                    <OutArgument x:TypeArguments="ui:GenericValue">[strPermitNumber]</OutArgument>
                                                   </Assign.To>
                                                   <Assign.Value>
-                                                    <InArgument x:TypeArguments="x:String">[strPermitNumber.Replace("-","")]</InArgument>
+                                                    <InArgument x:TypeArguments="ui:GenericValue">[New UiPath.Core.GenericValue(strPermitNumber.ToString.Replace("-", ""))]</InArgument>
                                                   </Assign.Value>
                                                 </Assign>
                                               </Sequence>
@@ -1569,13 +1574,25 @@
                                                                               <ActivityAction.Argument>
                                                                                 <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                                                                               </ActivityAction.Argument>
-                                                                              <Sequence sap:VirtualizedContainerService.HintSize="500,784" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                                                                              <Sequence sap:VirtualizedContainerService.HintSize="500,1040" sap2010:WorkflowViewState.IdRef="Sequence_57">
+                                                                                <Sequence.Variables>
+                                                                                  <Variable x:TypeArguments="x:String" Name="strExcelFilePath" />
+                                                                                </Sequence.Variables>
                                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                   </scg:Dictionary>
                                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into File Name Box" EmptyField="True" sap:VirtualizedContainerService.HintSize="438,135" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[item.ToString]">
+                                                                                <Assign sap:VirtualizedContainerService.HintSize="438,82" sap2010:WorkflowViewState.IdRef="Assign_135">
+                                                                                  <Assign.To>
+                                                                                    <OutArgument x:TypeArguments="x:String">[strExcelFilePath]</OutArgument>
+                                                                                  </Assign.To>
+                                                                                  <Assign.Value>
+                                                                                    <InArgument x:TypeArguments="x:String">[item.ToString.Replace("C:\","\\Client\C$\")]</InArgument>
+                                                                                  </Assign.Value>
+                                                                                </Assign>
+                                                                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="438,94" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[strExcelFilePath]" />
+                                                                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Type Into File Name Box" EmptyField="True" sap:VirtualizedContainerService.HintSize="438,135" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[strExcelFilePath]">
                                                                                   <ui:TypeInto.Target>
                                                                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="37600517-09c9-4da5-a3aa-1d666967a0c8" InformativeScreenshot="15b2d4cdb94f03db4e299bc0bc2923d3" Selector="&lt;ctrl name='File name:' role='combo box' /&gt;&lt;ctrl name='File name:' role='editable text' /&gt;">
                                                                                       <ui:Target.TimeoutMS>
@@ -2072,7 +2089,7 @@
                                                 <av:PointCollection x:Key="ConnectorLocation">305,754.5 305,804.5</av:PointCollection>
                                               </scg:Dictionary>
                                             </sap:WorkflowViewStateService.ViewState>
-                                            <Flowchart DisplayName="Attach to Main DB" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Flowchart_15">
+                                            <Flowchart DisplayName="Attach to Main DB" sap:VirtualizedContainerService.HintSize="1091,1574" sap2010:WorkflowViewState.IdRef="Flowchart_15">
                                               <Flowchart.Variables>
                                                 <Variable x:TypeArguments="ui:Window" Name="windowOverwrite" />
                                                 <Variable x:TypeArguments="ui:Window" Name="windowEnterDate" />
@@ -2470,7 +2487,7 @@
                                                                         <av:PointCollection x:Key="ConnectorLocation">490,643.5 490,703.5 300,703.5 300,733.5</av:PointCollection>
                                                                       </scg:Dictionary>
                                                                     </sap:WorkflowViewStateService.ViewState>
-                                                                    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Attach Window Date Received" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="WindowScope_17" InformativeScreenshot="6a89a92f61f4498988965f61f6969dd8" Window="[windowEnterDate]">
+                                                                    <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Attach Window Date Received" sap:VirtualizedContainerService.HintSize="484,540" sap2010:WorkflowViewState.IdRef="WindowScope_17" InformativeScreenshot="6a89a92f61f4498988965f61f6969dd8" Window="[windowEnterDate]">
                                                                       <ui:WindowScope.Body>
                                                                         <ActivityAction x:TypeArguments="x:Object">
                                                                           <ActivityAction.Argument>
@@ -2616,7 +2633,7 @@
                                                     <av:PointCollection x:Key="ConnectorLocation">305,857.5 305,907.5</av:PointCollection>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <Flowchart DisplayName="Open DMS and Search For Permit Number" sap:VirtualizedContainerService.HintSize="836,1099.5" sap2010:WorkflowViewState.IdRef="Flowchart_16">
+                                                <Flowchart DisplayName="Open DMS and Search For Permit Number" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Flowchart_16">
                                                   <Flowchart.Variables>
                                                     <Variable x:TypeArguments="ui:Window" Name="windowDMS" />
                                                     <Variable x:TypeArguments="x:Boolean" Name="boolSearchResultsFullPermitNum" />
@@ -2627,7 +2644,7 @@
                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                       <av:Point x:Key="ShapeLocation">480,2.5</av:Point>
                                                       <av:Size x:Key="ShapeSize">60,75</av:Size>
-                                                      <av:PointCollection x:Key="ConnectorLocation">510,77.5 510,127.5</av:PointCollection>
+                                                      <av:PointCollection x:Key="ConnectorLocation">510,77.5 510,107.5 521.75,107.5 521.75,127.5</av:PointCollection>
                                                       <x:Double x:Key="Width">801.75</x:Double>
                                                       <x:Double x:Key="Height">1062.5320000000002</x:Double>
                                                     </scg:Dictionary>
@@ -2639,8 +2656,8 @@
                                                     <sap:WorkflowViewStateService.ViewState>
                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                         <av:Point x:Key="ShapeLocation">410,127.5</av:Point>
-                                                        <av:Size x:Key="ShapeSize">200,83</av:Size>
-                                                        <av:PointCollection x:Key="ConnectorLocation">510,210.5 510,260.5</av:PointCollection>
+                                                        <av:Size x:Key="ShapeSize">223.5,83</av:Size>
+                                                        <av:PointCollection x:Key="ConnectorLocation">521.75,210.5 521.75,240.5 521.5,240.5 521.5,260.5</av:PointCollection>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
                                                     <Sequence DisplayName="Navigate_To_DMS_Home" sap:VirtualizedContainerService.HintSize="540,495" sap2010:WorkflowViewState.IdRef="Sequence_64">
@@ -2649,20 +2666,20 @@
                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
-                                                      <p:GetSecureCredential CredentialType="Generic" DisplayName="Get Secure Credentials" sap:VirtualizedContainerService.HintSize="478,81" sap2010:WorkflowViewState.IdRef="GetSecureCredential_2" Password="[out_strDMSPassword]" PersistanceType="Enterprise" Target="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" Username="[out_DMSUsername]">
+                                                      <p:GetSecureCredential CredentialType="Generic" DisplayName="Get Secure Credentials" sap:VirtualizedContainerService.HintSize="478,81" sap2010:WorkflowViewState.IdRef="GetSecureCredential_2" Password="[strDMSPassword]" PersistanceType="Enterprise" Target="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" Username="[DMSUsername]">
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
                                                       </p:GetSecureCredential>
-                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="478,263" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_1" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="478,263" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_1" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                         <usa:SharepointApplicationScope.Body>
                                                           <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                             <ActivityAction.Argument>
                                                               <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
                                                             </ActivityAction.Argument>
-                                                            <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="444,119" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[out_browserDMS]" Url="[io_Config(&quot;DMSHomeUrl&quot;).ToString]">
+                                                            <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="444,119" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[browserDMS]" Url="[io_Config(&quot;DMSHomeUrl&quot;).ToString]">
                                                               <ui:OpenBrowser.Body>
                                                                 <ActivityAction x:TypeArguments="x:Object">
                                                                   <ActivityAction.Argument>
@@ -2680,23 +2697,23 @@
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <av:Point x:Key="ShapeLocation">410,260.5</av:Point>
-                                                            <av:Size x:Key="ShapeSize">200,83</av:Size>
-                                                            <av:PointCollection x:Key="ConnectorLocation">510,343.5 510,393.5</av:PointCollection>
+                                                            <av:Size x:Key="ShapeSize">223,83</av:Size>
+                                                            <av:PointCollection x:Key="ConnectorLocation">521.5,343.5 521.5,373.5 510,373.5 510,393.5</av:PointCollection>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <Sequence DisplayName="Check_For_Home_Screen" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_65">
+                                                        <Sequence DisplayName="Check_For_Home_Screen" sap:VirtualizedContainerService.HintSize="223,83" sap2010:WorkflowViewState.IdRef="Sequence_65">
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                          <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_2" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                          <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_2" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                             <usa:SharepointApplicationScope.Body>
                                                               <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                 <ActivityAction.Argument>
                                                                   <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
                                                                 </ActivityAction.Argument>
-                                                                <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[out_browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser" sap:VirtualizedContainerService.HintSize="434,254" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="1a0e8dd115ed6fe27c361e5e97c751af">
+                                                                <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser" sap:VirtualizedContainerService.HintSize="434,254" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="1a0e8dd115ed6fe27c361e5e97c751af">
                                                                   <ui:BrowserScope.Body>
                                                                     <ActivityAction x:TypeArguments="x:Object">
                                                                       <ActivityAction.Argument>
@@ -2738,7 +2755,7 @@
                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                     <av:Point x:Key="ShapeLocation">218.25,410.5</av:Point>
                                                                     <av:Size x:Key="ShapeSize">200,53</av:Size>
-                                                                    <av:PointCollection x:Key="ConnectorLocation">318.25,463.5 318.25,513.5</av:PointCollection>
+                                                                    <av:PointCollection x:Key="ConnectorLocation">318.25,463.5 318.25,493.5 327.5,493.5 327.5,513.5</av:PointCollection>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
                                                                 <ui:WindowScope SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" ApplicationWindow="[windowDMS]" DisplayName="Attach To DMS Window" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="WindowScope_24" InformativeScreenshot="4e93dee5bd6e8c31bfec86fe16368a3d" Selector="&lt;wnd app='msedge.exe' title='Document Management Service *' /&gt;">
@@ -2761,23 +2778,23 @@
                                                                     <sap:WorkflowViewStateService.ViewState>
                                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                         <av:Point x:Key="ShapeLocation">218.25,513.5</av:Point>
-                                                                        <av:Size x:Key="ShapeSize">200,83</av:Size>
-                                                                        <av:PointCollection x:Key="ConnectorLocation">318.25,596.5 318.25,646.5</av:PointCollection>
+                                                                        <av:Size x:Key="ShapeSize">218.5,83</av:Size>
+                                                                        <av:PointCollection x:Key="ConnectorLocation">327.5,596.5 327.5,626.5 318.25,626.5 318.25,646.5</av:PointCollection>
                                                                       </scg:Dictionary>
                                                                     </sap:WorkflowViewStateService.ViewState>
-                                                                    <Sequence DisplayName="Search_For_Permit_Number" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_69">
+                                                                    <Sequence DisplayName="Search_For_Permit_Number" sap:VirtualizedContainerService.HintSize="218.5,83" sap2010:WorkflowViewState.IdRef="Sequence_69">
                                                                       <sap:WorkflowViewStateService.ViewState>
                                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                         </scg:Dictionary>
                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="518,684" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_5" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="518,684" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_5" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                                         <usa:SharepointApplicationScope.Body>
                                                                           <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                             <ActivityAction.Argument>
                                                                               <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
                                                                             </ActivityAction.Argument>
-                                                                            <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[out_browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser" sap:VirtualizedContainerService.HintSize="484,540" sap2010:WorkflowViewState.IdRef="BrowserScope_4" InformativeScreenshot="1c841442f149fac25b52211068281414">
+                                                                            <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser" sap:VirtualizedContainerService.HintSize="484,540" sap2010:WorkflowViewState.IdRef="BrowserScope_4" InformativeScreenshot="1c841442f149fac25b52211068281414">
                                                                               <ui:BrowserScope.Body>
                                                                                 <ActivityAction x:TypeArguments="x:Object">
                                                                                   <ActivityAction.Argument>
@@ -2846,7 +2863,7 @@
                                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                             </scg:Dictionary>
                                                                           </sap:WorkflowViewStateService.ViewState>
-                                                                          <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_4" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                                          <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_4" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                                             <usa:SharepointApplicationScope.Body>
                                                                               <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                                 <ActivityAction.Argument>
@@ -2881,7 +2898,7 @@
                                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                 <av:Point x:Key="ShapeLocation">274.5,779.5</av:Point>
                                                                                 <av:Size x:Key="ShapeSize">87.5,87</av:Size>
-                                                                                <av:PointCollection x:Key="TrueConnector">274.5,823 204.75,823</av:PointCollection>
+                                                                                <av:PointCollection x:Key="TrueConnector">274.5,823 223.25,823</av:PointCollection>
                                                                                 <av:PointCollection x:Key="FalseConnector">362,823 412,823</av:PointCollection>
                                                                               </scg:Dictionary>
                                                                             </sap:WorkflowViewStateService.ViewState>
@@ -2890,23 +2907,23 @@
                                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                     <av:Point x:Key="ShapeLocation">4.75,781.5</av:Point>
-                                                                                    <av:Size x:Key="ShapeSize">200,83</av:Size>
-                                                                                    <av:PointCollection x:Key="ConnectorLocation">104.75,864.5 104.75,914.5</av:PointCollection>
+                                                                                    <av:Size x:Key="ShapeSize">218.5,83</av:Size>
+                                                                                    <av:PointCollection x:Key="ConnectorLocation">114,864.5 114,894.5 104.75,894.5 104.75,914.5</av:PointCollection>
                                                                                   </scg:Dictionary>
                                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                                <Sequence DisplayName="Click_Permit_Number_Folder_Link" sap:VirtualizedContainerService.HintSize="200,83" sap2010:WorkflowViewState.IdRef="Sequence_66">
+                                                                                <Sequence DisplayName="Click_Permit_Number_Folder_Link" sap:VirtualizedContainerService.HintSize="218.5,83" sap2010:WorkflowViewState.IdRef="Sequence_66">
                                                                                   <sap:WorkflowViewStateService.ViewState>
                                                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                     </scg:Dictionary>
                                                                                   </sap:WorkflowViewStateService.ViewState>
-                                                                                  <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_3" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                                                  <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_3" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                                                     <usa:SharepointApplicationScope.Body>
                                                                                       <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                                         <ActivityAction.Argument>
                                                                                           <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
                                                                                         </ActivityAction.Argument>
-                                                                                        <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[out_browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser" sap:VirtualizedContainerService.HintSize="434,254" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="1c841442f149fac25b52211068281414">
+                                                                                        <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser" sap:VirtualizedContainerService.HintSize="434,254" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="1c841442f149fac25b52211068281414">
                                                                                           <ui:BrowserScope.Body>
                                                                                             <ActivityAction x:TypeArguments="x:Object">
                                                                                               <ActivityAction.Argument>
@@ -2949,7 +2966,7 @@
                                                                                         <av:Size x:Key="ShapeSize">200,53</av:Size>
                                                                                       </scg:Dictionary>
                                                                                     </sap:WorkflowViewStateService.ViewState>
-                                                                                    <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_6" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                                                    <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_6" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                                                       <usa:SharepointApplicationScope.Body>
                                                                                         <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                                           <ActivityAction.Argument>
@@ -3105,7 +3122,7 @@
                                                               </sap:WorkflowViewStateService.ViewState>
                                                               <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="508,635" sap2010:WorkflowViewState.IdRef="TryCatch_6">
                                                                 <TryCatch.Try>
-                                                                  <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,397" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_8" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                                  <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,397" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_8" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                                     <usa:SharepointApplicationScope.Body>
                                                                       <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                         <ActivityAction.Argument>
@@ -3158,13 +3175,13 @@
                                                                       <ActivityAction.Argument>
                                                                         <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                                                       </ActivityAction.Argument>
-                                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_9" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_9" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                                         <usa:SharepointApplicationScope.Body>
                                                                           <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                             <ActivityAction.Argument>
                                                                               <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
                                                                             </ActivityAction.Argument>
-                                                                            <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[out_browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser" sap:VirtualizedContainerService.HintSize="434,254" sap2010:WorkflowViewState.IdRef="BrowserScope_8" InformativeScreenshot="b51116f96f469cf2a8a220b0b4297975">
+                                                                            <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser" sap:VirtualizedContainerService.HintSize="434,254" sap2010:WorkflowViewState.IdRef="BrowserScope_8" InformativeScreenshot="b51116f96f469cf2a8a220b0b4297975">
                                                                               <ui:BrowserScope.Body>
                                                                                 <ActivityAction x:TypeArguments="x:Object">
                                                                                   <ActivityAction.Argument>
@@ -3248,7 +3265,7 @@
                                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                         </scg:Dictionary>
                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_10" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_10" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                                         <usa:SharepointApplicationScope.Body>
                                                                           <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                             <ActivityAction.Argument>
@@ -3305,7 +3322,7 @@
                                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                 </scg:Dictionary>
                                                                               </sap:WorkflowViewStateService.ViewState>
-                                                                              <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="564,755" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_11" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                                              <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="564,755" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_11" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                                                 <usa:SharepointApplicationScope.Body>
                                                                                   <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                                     <ActivityAction.Argument>
@@ -3410,13 +3427,13 @@
                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                          <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_7" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                          <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468,398" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_7" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                             <usa:SharepointApplicationScope.Body>
                                                               <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                 <ActivityAction.Argument>
                                                                   <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
                                                                 </ActivityAction.Argument>
-                                                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser" sap:VirtualizedContainerService.HintSize="434,254" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="7f1d8cb25374e78ec5001a831beadbc8" Selector="&lt;html app='msedge.exe' htmlwindowname='{}' title='Document Management Service - * - All Documents' /&gt;" UiBrowser="[out_browserDMS]">
+                                                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser" sap:VirtualizedContainerService.HintSize="434,254" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="7f1d8cb25374e78ec5001a831beadbc8" Selector="&lt;html app='msedge.exe' htmlwindowname='{}' title='Document Management Service - * - All Documents' /&gt;" UiBrowser="[browserDMS]">
                                                                   <ui:BrowserScope.Body>
                                                                     <ActivityAction x:TypeArguments="x:Object">
                                                                       <ActivityAction.Argument>
@@ -3458,7 +3475,7 @@
                                                             <av:PointCollection x:Key="ConnectorLocation">305,1063.5 305,1113.5</av:PointCollection>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <Flowchart DisplayName="Upload Excel Return To DMS" sap:VirtualizedContainerService.HintSize="634,637" sap2010:WorkflowViewState.IdRef="Flowchart_18">
+                                                        <Flowchart DisplayName="Upload Excel Return To DMS" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="Flowchart_18">
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -3478,7 +3495,7 @@
                                                                 <av:PointCollection x:Key="ConnectorLocation">300,180.5 300,230.5</av:PointCollection>
                                                               </scg:Dictionary>
                                                             </sap:WorkflowViewStateService.ViewState>
-                                                            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Remove Data From DOB cells" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" WorkbookPath="[item.ToString]">
+                                                            <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Remove Data From DOB cells" sap:VirtualizedContainerService.HintSize="200,53" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_5" InstanceCachePeriod="3000" SensitivityOperation="None" WorkbookPath="[item.ToString]">
                                                               <ui:ExcelApplicationScope.Body>
                                                                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                                                   <ActivityAction.Argument>
@@ -5465,24 +5482,12 @@
                                                                                           </ActivityAction>
                                                                                         </ufa:FormActivity.DelayBody>
                                                                                         <ufa:FormActivity.FormFieldsCollection>
-                                                                                          <InArgument x:TypeArguments="x:String" x:Key="Header">
-                                                                                            <Literal x:TypeArguments="x:String">Oops!</Literal>
-                                                                                          </InArgument>
-                                                                                          <InArgument x:TypeArguments="x:String" x:Key="DocumentDate">
-                                                                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strDocumentDate" />
-                                                                                          </InArgument>
-                                                                                          <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">
-                                                                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strReceivedDate" />
-                                                                                          </InArgument>
-                                                                                          <InArgument x:TypeArguments="x:String" x:Key="ExternalAuthor">
-                                                                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strExternalAuthor" />
-                                                                                          </InArgument>
-                                                                                          <InArgument x:TypeArguments="x:String" x:Key="DisclosureStatus">
-                                                                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strDisclosureStatus" />
-                                                                                          </InArgument>
-                                                                                          <InArgument x:TypeArguments="x:String" x:Key="Filename">
-                                                                                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAttachmentName" />
-                                                                                          </InArgument>
+                                                                                          <InArgument x:TypeArguments="x:String" x:Key="Header">Oops!</InArgument>
+                                                                                          <InArgument x:TypeArguments="x:String" x:Key="DocumentDate">[strDocumentDate]</InArgument>
+                                                                                          <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">[strReceivedDate]</InArgument>
+                                                                                          <InArgument x:TypeArguments="x:String" x:Key="ExternalAuthor">[strExternalAuthor]</InArgument>
+                                                                                          <InArgument x:TypeArguments="x:String" x:Key="DisclosureStatus">[strDisclosureStatus]</InArgument>
+                                                                                          <InArgument x:TypeArguments="x:String" x:Key="Filename">[strAttachmentName]</InArgument>
                                                                                         </ufa:FormActivity.FormFieldsCollection>
                                                                                       </ufa:FormActivity>
                                                                                       <If Condition="[boolContinue]" DisplayName="User Requested Stop?" sap:VirtualizedContainerService.HintSize="534,222" sap2010:WorkflowViewState.IdRef="If_19">
@@ -5508,13 +5513,13 @@
                                                                   </Sequence>
                                                                 </Sequence>
                                                               </Switch>
-                                                              <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Close DMS Browser" sap:VirtualizedContainerService.HintSize="497,169" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_16" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[out_strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[out_DMSUsername]">
+                                                              <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Close DMS Browser" sap:VirtualizedContainerService.HintSize="497,169" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_16" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
                                                                 <usa:SharepointApplicationScope.Body>
                                                                   <ActivityAction x:TypeArguments="us:SharePointContextInfo">
                                                                     <ActivityAction.Argument>
                                                                       <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
                                                                     </ActivityAction.Argument>
-                                                                    <ui:CloseTab Browser="[out_browserDMS]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="CloseTab_2" />
+                                                                    <ui:CloseTab Browser="[browserDMS]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="CloseTab_2" />
                                                                   </ActivityAction>
                                                                 </usa:SharepointApplicationScope.Body>
                                                                 <sap:WorkflowViewStateService.ViewState>
@@ -5558,7 +5563,7 @@
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" DisplayName="Read Excel Waste Return Permit Number" sap:VirtualizedContainerService.HintSize="579,170" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[item.ToString]">
+                                  <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" AutoSave="False" DisplayName="Read Excel Waste Return Permit Number" sap:VirtualizedContainerService.HintSize="579,170" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" SensitivityOperation="None" Visible="False" WorkbookPath="[item.ToString]">
                                     <ui:ExcelApplicationScope.Body>
                                       <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                         <ActivityAction.Argument>
@@ -5584,7 +5589,7 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                     <If.Else>
-                                      <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Write Revised Permit Number To Excel Waste Return" sap:VirtualizedContainerService.HintSize="434,198" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" Visible="False" WorkbookPath="[item.ToString]">
+                                      <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Write Revised Permit Number To Excel Waste Return" sap:VirtualizedContainerService.HintSize="434,198" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" SensitivityOperation="None" Visible="False" WorkbookPath="[item.ToString]">
                                         <ui:ExcelApplicationScope.Body>
                                           <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                             <ActivityAction.Argument>
