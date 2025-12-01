@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1228,939</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1306.85714285714,1912</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -85,12 +85,18 @@
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="512,590" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="614.857142857143,1846.85714285714" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="sco:Collection(sd:Process)" Name="collProcesses" />
       <Variable x:TypeArguments="x:Boolean" Name="boolORATSTab" />
+      <Variable x:TypeArguments="ui:Window" Name="windowORATS" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -98,15 +104,15 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="450,94" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening applications...&quot;]" />
-    <ui:GetProcesses ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Retrieve open processes to check if required applications are already open e.g. Outlook" DisplayName="Get Open Processes" sap:VirtualizedContainerService.HintSize="450,85" sap2010:WorkflowViewState.IdRef="GetProcesses_1" Processes="[collProcesses]">
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="566.857142857143,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Opening applications...&quot;]" />
+    <ui:GetProcesses ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Retrieve open processes to check if required applications are already open e.g. Outlook" DisplayName="Get Open Processes" sap:VirtualizedContainerService.HintSize="566.857142857143,88.5714285714286" sap2010:WorkflowViewState.IdRef="GetProcesses_1" Processes="[collProcesses]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:GetProcesses>
-    <TryCatch DisplayName="Try Open Outlook" sap:VirtualizedContainerService.HintSize="450,53" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+    <TryCatch DisplayName="Try Open Outlook" sap:VirtualizedContainerService.HintSize="566.857142857143,54.2857142857143" sap2010:WorkflowViewState.IdRef="TryCatch_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -182,14 +188,15 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <Sequence DisplayName="Check if ORATS is Open" sap:VirtualizedContainerService.HintSize="450,83" sap2010:WorkflowViewState.IdRef="Sequence_22">
+    <Sequence DisplayName="Check if ORATS is Open" sap:VirtualizedContainerService.HintSize="566.857142857143,1383.42857142857" sap2010:WorkflowViewState.IdRef="Sequence_22">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:WindowScope SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" ApplicationWindow="[OUT_windowORATS]" ContinueOnError="True" DisplayName="Attach Window ORATS" sap:VirtualizedContainerService.HintSize="484,163" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="b2c18054441934deaa468d0a8476ad0c" Selector="&lt;wnd app='msaccess.exe' cls='OMain' isremoteapp='1' title='Microsoft Access - ORATS*' /&gt;">
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518.857142857143,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Attempting to check whether ORATs is open&quot;]" />
+      <ui:WindowScope SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" ApplicationWindow="[windowORATS]" ContinueOnError="True" DisplayName="Attach Window ORATS" sap:VirtualizedContainerService.HintSize="518.857142857143,164" sap2010:WorkflowViewState.IdRef="WindowScope_3" InformativeScreenshot="b2c18054441934deaa468d0a8476ad0c" Selector="&lt;wnd app='msaccess.exe' cls='OMain' isremoteapp='1' title='Microsoft Access - ORATS_Prg : Database (Access 2007)' /&gt;">
         <ui:WindowScope.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
@@ -197,45 +204,65 @@
             </ActivityAction.Argument>
           </ActivityAction>
         </ui:WindowScope.Body>
+      </ui:WindowScope>
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="518.857142857143,426.285714285714" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="482.285714285714,346.857142857143" sap2010:WorkflowViewState.IdRef="Sequence_23">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="True" DisplayName="Attach Window ORATS" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="WindowScope_4" InformativeScreenshot="b2c18054441934deaa468d0a8476ad0c" Window="[windowORATS]">
+              <ui:WindowScope.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <ui:UiElementExists DisplayName="Element Exists RATS Main Menu Tab" Exists="[boolORATSTab]" sap:VirtualizedContainerService.HintSize="334.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                    <ui:UiElementExists.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="01b4a94d-30f2-4bf1-81b7-2c2d4f4bfac3" InformativeScreenshot="5e33c789c0e85335618d41bb448380a6" Selector="&lt;uia cls='NetUIPanViewer' name='Ribbon Tabs' /&gt;&lt;uia cls='NetUIRibbonTab' name='RATS Main Menu' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:UiElementExists.Target>
+                  </ui:UiElementExists>
+                </ActivityAction>
+              </ui:WindowScope.Body>
+            </ui:WindowScope>
+          </Sequence>
+        </ui:CommentOut.Body>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             <x:Boolean x:Key="IsPinned">False</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-      </ui:WindowScope>
-      <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" ContinueOnError="True" DisplayName="Attach Window ORATS" sap:VirtualizedContainerService.HintSize="484,254" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="b2c18054441934deaa468d0a8476ad0c" Window="[OUT_windowORATS]">
-        <ui:WindowScope.Body>
-          <ActivityAction x:TypeArguments="x:Object">
-            <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-            </ActivityAction.Argument>
-            <ui:UiElementExists DisplayName="Element Exists RATS Main Menu Tab" Exists="[boolORATSTab]" sap:VirtualizedContainerService.HintSize="334,107" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
-              <ui:UiElementExists.Target>
-                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="01b4a94d-30f2-4bf1-81b7-2c2d4f4bfac3" InformativeScreenshot="5e33c789c0e85335618d41bb448380a6" Selector="&lt;uia cls='MsoCommandBar' name='Ribbon' /&gt;&lt;uia name='Ribbon Tabs' role='tab' /&gt;&lt;uia name='RATS Main Menu' role='tab item' /&gt;">
-                  <ui:Target.TimeoutMS>
-                    <InArgument x:TypeArguments="x:Int32" />
-                  </ui:Target.TimeoutMS>
-                  <ui:Target.WaitForReady>
-                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                  </ui:Target.WaitForReady>
-                </ui:Target>
-              </ui:UiElementExists.Target>
-            </ui:UiElementExists>
-          </ActivityAction>
-        </ui:WindowScope.Body>
-      </ui:WindowScope>
-      <If Condition="[boolORATSTab = True]" DisplayName="ORATS Exists?" sap:VirtualizedContainerService.HintSize="484,222" sap2010:WorkflowViewState.IdRef="If_5">
-        <If.Else>
-          <Throw DisplayName="Throw System Exception" Exception="[New System.Exception(&quot;Failed to attach to the ORATS application&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1">
+      </ui:CommentOut>
+      <If Condition="[windowORATS Is Nothing]" DisplayName="ORATS Exists?" sap:VirtualizedContainerService.HintSize="518.857142857143,257.142857142857" sap2010:WorkflowViewState.IdRef="If_5">
+        <If.Then>
+          <Throw DisplayName="Throw System Exception" Exception="[New System.Exception(&quot;Failed to attach to the ORATS application&quot;)]" sap:VirtualizedContainerService.HintSize="200,25.1428571428571" sap2010:WorkflowViewState.IdRef="Throw_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Throw>
-        </If.Else>
+        </If.Then>
       </If>
+      <Assign DisplayName="Assign OUT_windowORATS" sap:VirtualizedContainerService.HintSize="518.857142857143,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_2">
+        <Assign.To>
+          <OutArgument x:TypeArguments="ui:Window">[OUT_windowORATS]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="ui:Window">[windowORATS]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518.857142857143,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;ORATS Open - Confirmed&quot;]" />
     </Sequence>
   </Sequence>
 </Activity>

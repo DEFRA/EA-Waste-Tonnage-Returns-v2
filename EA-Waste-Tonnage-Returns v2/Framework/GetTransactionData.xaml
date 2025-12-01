@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1602,2397</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1562.85714285714,2566.85714285714</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetTransactionData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="54">
@@ -118,9 +118,12 @@
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>Pop Ups</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;This framework is setup by default to look for an Outlook MailMessage from a config-specified mailbox, this should be changed on a work package basis with out_TransactionItem being set to a single transaction from whatever source is required.&#xA;&#xA;If there are no transaction items remaining, out_TransactionItem should be set to Nothing, which leads to the End Process state. &#xA;&#xA;out_boolLastTransaction should be set to True where it is possible to determine that a transaction is the last in the batch. If this is not possible to derive then changes will need to be made to the &quot;Final Transaction&quot; transition at the framework's parent level. " DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="1612,2332" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;This framework is setup by default to look for an Outlook MailMessage from a config-specified mailbox, this should be changed on a work package basis with out_TransactionItem being set to a single transaction from whatever source is required.&#xA;&#xA;If there are no transaction items remaining, out_TransactionItem should be set to Nothing, which leads to the End Process state. &#xA;&#xA;out_boolLastTransaction should be set to True where it is possible to determine that a transaction is the last in the batch. If this is not possible to derive then changes will need to be made to the &quot;Final Transaction&quot; transition at the framework's parent level. " DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="1572.57142857143,2501.71428571429" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="sn:NetworkCredential" Name="credNetworkCredentials" />
       <Variable x:TypeArguments="umm:Office365Message" Name="mailInProgressMessage" />
@@ -133,20 +136,21 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_credExchangeCredentials.UserName]" ApplicationSecret="[in_credExchangeCredentials.Password]" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1550,2097" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Services="Mail" Tenant="[io_Config(&quot;TenantID&quot;).ToString]">
+    <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_credExchangeCredentials.UserName]" ApplicationSecret="[in_credExchangeCredentials.Password]" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1524.57142857143,2273.14285714286" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Services="Mail" Tenant="[io_Config(&quot;TenantID&quot;).ToString]">
       <uma:Office365ApplicationScope.Body>
         <ActivityAction x:TypeArguments="mg:GraphServiceClient">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
           </ActivityAction.Argument>
-          <Sequence sap:VirtualizedContainerService.HintSize="1516,2010" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence sap:VirtualizedContainerService.HintSize="1490.28571428571,2185.71428571429" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <umam:GetMail EmailId="{x:Null}" Query="{x:Null}" Account="[io_Config(&quot;EmailAccount&quot;).ToString]" DisplayName="Get &quot;To Process&quot; Email" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1454,25" sap2010:WorkflowViewState.IdRef="GetMail_1" MailFolder="[io_Config(&quot;EmailToProcessFolder&quot;).ToString]" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="OldestFirst" Results="[listMailMessages]" Top="1" />
-            <If Condition="[listMailMessages.Count &gt; 0]" DisplayName="Retrieved Emails?" sap:VirtualizedContainerService.HintSize="1454,1834" sap2010:WorkflowViewState.IdRef="If_1">
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1442.28571428571,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Attempting to get Email&quot;]" />
+            <umam:GetMail EmailId="{x:Null}" Query="{x:Null}" Top="{x:Null}" Account="[io_Config(&quot;EmailAccount&quot;).ToString]" DisplayName="Get &quot;To Process&quot; Email" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1442.28571428571,25.1428571428571" sap2010:WorkflowViewState.IdRef="GetMail_1" MailFolder="[io_Config(&quot;EmailToProcessFolder&quot;).ToString]" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="OldestFirst" Results="[listMailMessages]" />
+            <If Condition="[listMailMessages.Count &gt; 0]" DisplayName="Retrieved Emails?" sap:VirtualizedContainerService.HintSize="1442.28571428571,1906.28571428571" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -154,7 +158,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="975,1672" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence sap:VirtualizedContainerService.HintSize="962.285714285714,1740.57142857143" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="umm:Office365Message" Name="mailCurrentCase" />
                   </Sequence.Variables>
@@ -163,9 +167,9 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[listMailMessages.Count = 1]" DisplayName="Last Transaction?" sap:VirtualizedContainerService.HintSize="913,245" sap2010:WorkflowViewState.IdRef="If_2">
+                  <If Condition="[listMailMessages.Count = 1]" DisplayName="Last Transaction?" sap:VirtualizedContainerService.HintSize="914.285714285714,250.857142857143" sap2010:WorkflowViewState.IdRef="If_2">
                     <If.Then>
-                      <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_4">
+                      <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_4">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Boolean">[out_boolLastTransaction]</OutArgument>
                         </Assign.To>
@@ -175,7 +179,7 @@
                       </Assign>
                     </If.Then>
                     <If.Else>
-                      <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_5">
+                      <Assign DisplayName="Assign Last Transaction" sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_5">
                         <Assign.To>
                           <OutArgument x:TypeArguments="x:Boolean">[out_boolLastTransaction]</OutArgument>
                         </Assign.To>
@@ -185,17 +189,17 @@
                       </Assign>
                     </If.Else>
                   </If>
-                  <If sap2010:Annotation.AnnotationText="Where the Process Type has been selected as &quot;Single&quot; mode and the framework has completed the first transaction then it should prompt the user to ask if it should continue processing. &#xA;&#xA;Before prompting it also checks to ensure there is more data to process before presenting the user with the option to continue." Condition="[in_strProcessType = &quot;single&quot; AND in_TransactionNumber &gt;1 AND in_boolContinue = False]" DisplayName="Present &quot;Single&quot; Mode Form?" sap:VirtualizedContainerService.HintSize="913,360" sap2010:WorkflowViewState.IdRef="If_4">
+                  <If sap2010:Annotation.AnnotationText="Where the Process Type has been selected as &quot;Single&quot; mode and the framework has completed the first transaction then it should prompt the user to ask if it should continue processing. &#xA;&#xA;Before prompting it also checks to ensure there is more data to process before presenting the user with the option to continue." Condition="[in_strProcessType = &quot;single&quot; AND in_TransactionNumber &gt;1 AND in_boolContinue = False]" DisplayName="Present &quot;Single&quot; Mode Form?" sap:VirtualizedContainerService.HintSize="914.285714285714,372" sap2010:WorkflowViewState.IdRef="If_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                     <If.Then>
-                      <p:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Single Mode Form" sap:VirtualizedContainerService.HintSize="200,25" IN_CSS_filepath="[&quot;/file://&quot; + System.IO.Directory.GetCurrentDirectory() + &quot;\Assets\Generic\ProcessAnotherForm.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="&lt;h1&gt;Continue processing?&lt;/h1&gt;&lt;P&gt;The robot has completed processing the previous case. Click Continue to process more cases.&lt;/P&gt;&lt;BR&gt;" IN_PopupTitle="Department for Environment, Food and Rural Affairs" IN_WidthHeight="[{500,275}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_4" />
+                      <p:Generic_PopUp OUT_ProcessType="{x:Null}" OUT_strButtonSelected="{x:Null}" DisplayName="Single Mode Form" sap:VirtualizedContainerService.HintSize="200,25.1428571428571" IN_CSS_filepath="[&quot;/file://&quot; + System.IO.Directory.GetCurrentDirectory() + &quot;\Assets\Generic\ProcessAnotherForm.css&quot;]" IN_ErrorMessage="The stop button was pressed" IN_PopupMessage="&lt;h1&gt;Continue processing?&lt;/h1&gt;&lt;P&gt;The robot has completed processing the previous case. Click Continue to process more cases.&lt;/P&gt;&lt;BR&gt;" IN_PopupTitle="Department for Environment, Food and Rural Affairs" IN_WidthHeight="[{500,275}]" sap2010:WorkflowViewState.IdRef="Generic_PopUp_4" />
                     </If.Then>
                   </If>
-                  <Assign DisplayName="Assign Current Mail Message" sap:VirtualizedContainerService.HintSize="913,83" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign DisplayName="Assign Current Mail Message" sap:VirtualizedContainerService.HintSize="914.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_6">
                     <Assign.To>
                       <OutArgument x:TypeArguments="umm:Office365Message">[mailCurrentCase]</OutArgument>
                     </Assign.To>
@@ -203,21 +207,21 @@
                       <InArgument x:TypeArguments="umm:Office365Message">[listMailMessages(0)]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <umam:MoveMail Account="[io_Config(&quot;EmailAccount&quot;).ToString]" DestinationFolderName="[io_Config(&quot;EmailInProgressFolder&quot;).ToString]" DisplayName="Move Email to &quot;In Progress&quot;" sap:VirtualizedContainerService.HintSize="913,139" sap2010:WorkflowViewState.IdRef="MoveMail_1" Message="[mailCurrentCase]" />
-                  <umam:GetMail EmailId="{x:Null}" Query="{x:Null}" Account="[io_Config(&quot;EmailAccount&quot;).ToString]" DisplayName="Get &quot;To Process&quot; Email from In Processs" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="913,25" sap2010:WorkflowViewState.IdRef="GetMail_2" MailFolder="[io_Config(&quot;EmailInProgressFolder&quot;).ToString]" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="OldestFirst" Results="[listMailMessages]" Top="1" />
-                  <ui:ForEach x:TypeArguments="umm:Office365Message" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="913,386" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[listMailMessages]">
+                  <umam:MoveMail Account="[io_Config(&quot;EmailAccount&quot;).ToString]" DestinationFolderName="[io_Config(&quot;EmailInProgressFolder&quot;).ToString]" DisplayName="Move Email to &quot;In Progress&quot;" sap:VirtualizedContainerService.HintSize="914.285714285714,143.428571428571" sap2010:WorkflowViewState.IdRef="MoveMail_1" Message="[mailCurrentCase]" />
+                  <umam:GetMail EmailId="{x:Null}" Query="{x:Null}" Account="[io_Config(&quot;EmailAccount&quot;).ToString]" DisplayName="Get &quot;To Process&quot; Email from In Processs" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="914.285714285714,25.1428571428571" sap2010:WorkflowViewState.IdRef="GetMail_2" MailFolder="[io_Config(&quot;EmailInProgressFolder&quot;).ToString]" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="OldestFirst" Results="[listMailMessages]" Top="1" />
+                  <ui:ForEach x:TypeArguments="umm:Office365Message" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="914.285714285714,364.571428571429" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[listMailMessages]">
                     <ui:ForEach.Body>
                       <ActivityAction x:TypeArguments="umm:Office365Message">
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="umm:Office365Message" Name="mail" />
                         </ActivityAction.Argument>
-                        <Sequence sap:VirtualizedContainerService.HintSize="496,259" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                        <Sequence sap:VirtualizedContainerService.HintSize="482.285714285714,235.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_3">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Assign DisplayName="Assign Current Mail Message" sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_8">
+                          <Assign DisplayName="Assign Current Mail Message" sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_8">
                             <Assign.To>
                               <OutArgument x:TypeArguments="umm:Office365Message">[mailInProgressMessage]</OutArgument>
                             </Assign.To>
@@ -225,12 +229,12 @@
                               <InArgument x:TypeArguments="umm:Office365Message">[mail]</InArgument>
                             </Assign.Value>
                           </Assign>
-                          <ui:Break sap:VirtualizedContainerService.HintSize="434,25" sap2010:WorkflowViewState.IdRef="Break_1" />
+                          <ui:Break sap:VirtualizedContainerService.HintSize="434.285714285714,25.1428571428571" sap2010:WorkflowViewState.IdRef="Break_1" />
                         </Sequence>
                       </ActivityAction>
                     </ui:ForEach.Body>
                   </ui:ForEach>
-                  <Assign DisplayName="Assign out_TransactionItem" sap:VirtualizedContainerService.HintSize="913,83" sap2010:WorkflowViewState.IdRef="Assign_2">
+                  <Assign DisplayName="Assign out_TransactionItem" sap:VirtualizedContainerService.HintSize="914.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_2">
                     <Assign.To>
                       <OutArgument x:TypeArguments="umm:Office365Message">[out_TransactionItem]</OutArgument>
                     </Assign.To>
@@ -238,10 +242,11 @@
                       <InArgument x:TypeArguments="umm:Office365Message">[mailInProgressMessage]</InArgument>
                     </Assign.Value>
                   </Assign>
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="914.285714285714,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Email picked up&quot;]" />
                 </Sequence>
               </If.Then>
               <If.Else>
-                <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_3">
                   <Assign.To>
                     <OutArgument x:TypeArguments="umm:Office365Message">[out_TransactionItem]</OutArgument>
                   </Assign.To>
