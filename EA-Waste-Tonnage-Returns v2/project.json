@@ -22,7 +22,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.6.0",
-  "projectVersion": "1.0.1",
+  "projectVersion": "1.0.2-alpha.1",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -39,8 +39,7 @@
     "readyForPiP": false,
     "startsInPiP": false,
     "mustRestoreAllDependencies": true,
-    "pipType": "ChildSession",
-    "robotVersion": "24.10.0"
+    "pipType": "ChildSession"
   },
   "designOptions": {
     "projectProfile": "Developement",
@@ -56,30 +55,12 @@
     "modernBehavior": false,
     "saveToCloud": false
   },
-  "arguments": {
-    "input": [
-      {
-        "name": "in_boolUnattended",
-        "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-        "required": false,
-        "hasDefault": false
-      }
-    ],
-    "output": []
-  },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
     {
       "filePath": "Main.xaml",
       "uniqueId": "539ef6c4-91f1-41b6-b313-91ac4bcbaafe",
-      "input": [
-        {
-          "name": "in_boolUnattended",
-          "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-          "required": false,
-          "hasDefault": false
-        }
-      ],
+      "input": [],
       "output": []
     }
   ],
