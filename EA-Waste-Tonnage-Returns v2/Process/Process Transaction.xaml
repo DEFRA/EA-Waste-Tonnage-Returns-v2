@@ -158,7 +158,6 @@
       <AssemblyReference>DRACOE Microsoft Graph</AssemblyReference>
       <AssemblyReference>UiPath.Web</AssemblyReference>
       <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " sap:VirtualizedContainerService.HintSize="634.285714285714,1050.28571428571" sap2010:WorkflowViewState.IdRef="Flowchart_3">
@@ -4160,7 +4159,7 @@
                                                                       <av:PointCollection x:Key="ConnectorLocation">305,1066.07142857142 305,1113.5</av:PointCollection>
                                                                     </scg:Dictionary>
                                                                   </sap:WorkflowViewStateService.ViewState>
-                                                                  <Flowchart DisplayName="Upload Excel Return To DMS" sap:VirtualizedContainerService.HintSize="200,54.2857142857143" sap2010:WorkflowViewState.IdRef="Flowchart_18">
+                                                                  <Flowchart DisplayName="Upload Excel Return To DMS" sap:VirtualizedContainerService.HintSize="634.285714285714,637.142857142857" sap2010:WorkflowViewState.IdRef="Flowchart_18">
                                                                     <sap:WorkflowViewStateService.ViewState>
                                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4179,14 +4178,14 @@
                                                                           <av:Size x:Key="ShapeSize">200,71.4285714285714</av:Size>
                                                                         </scg:Dictionary>
                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                      <Sequence DisplayName="DMS API" sap:VirtualizedContainerService.HintSize="835.428571428571,3778.28571428571" sap2010:WorkflowViewState.IdRef="Sequence_210">
+                                                                      <Sequence DisplayName="DMS API" sap:VirtualizedContainerService.HintSize="200,71.4285714285714" sap2010:WorkflowViewState.IdRef="Sequence_210">
                                                                         <sap:WorkflowViewStateService.ViewState>
                                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                           </scg:Dictionary>
                                                                         </sap:WorkflowViewStateService.ViewState>
-                                                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="787.428571428571,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[&quot;Attempting to Upload Excel to DMS&quot;]" />
-                                                                        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[io_Config(&quot;DMSExcelReturnDisclosureStatus&quot;).ToString]" sap:VirtualizedContainerService.HintSize="787.428571428571,3552.57142857143" sap2010:WorkflowViewState.IdRef="Switch`1_1">
+                                                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="668.571428571429,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_29" Level="Info" Message="[&quot;Attempting to Upload Excel to DMS&quot;]" />
+                                                                        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[io_Config(&quot;DMSExcelReturnDisclosureStatus&quot;).ToString]" sap:VirtualizedContainerService.HintSize="668.571428571429,2729.71428571429" sap2010:WorkflowViewState.IdRef="Switch`1_1">
                                                                           <sap:WorkflowViewStateService.ViewState>
                                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4214,7 +4213,7 @@
                                                                                 <InArgument x:TypeArguments="x:String">[strWorkingDirectory.Replace("Email.eml", "Return - Waste return Correspondence "+ strReturnPeriodForRename + " " + strReturnPeriodYear + " - Email and Submission"+".eml")]</InArgument>
                                                                               </Assign.Value>
                                                                             </Assign>
-                                                                            <Sequence DisplayName="Save Files &amp; Generate Metadata" sap:VirtualizedContainerService.HintSize="651.428571428571,1024" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                                                                            <Sequence DisplayName="Save Files &amp; Generate Metadata" sap:VirtualizedContainerService.HintSize="651.428571428571,1003.42857142857" sap2010:WorkflowViewState.IdRef="Sequence_93">
                                                                               <sap:WorkflowViewStateService.ViewState>
                                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4651,7 +4650,7 @@
                                                                               </sap:WorkflowViewStateService.ViewState>
                                                                             </ui:ForEachRow>
                                                                           </Sequence>
-                                                                          <Sequence x:Key="Public Register" DisplayName="Upload to Public Register" sap:VirtualizedContainerService.HintSize="747.428571428571,3335.42857142857" sap2010:WorkflowViewState.IdRef="Sequence_85">
+                                                                          <Sequence x:Key="Public Register" DisplayName="Upload to Public Register" sap:VirtualizedContainerService.HintSize="628.571428571429,2512.57142857143" sap2010:WorkflowViewState.IdRef="Sequence_85">
                                                                             <Sequence.Variables>
                                                                               <Variable x:TypeArguments="sd1:DataTable" Name="dtFileMetadata" />
                                                                               <Variable x:TypeArguments="x:String" Default="[item.ToString]" Name="strAttachmentName" />
@@ -4663,9 +4662,9 @@
                                                                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                               </scg:Dictionary>
                                                                             </sap:WorkflowViewStateService.ViewState>
-                                                                            <ui:DeleteFileX DisplayName="Delete File (If Exists)" sap:VirtualizedContainerService.HintSize="699.428571428571,82.2857142857143" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[strWorkingDirectory + &quot;Return - Waste Return &quot; + strReturnPeriodForRename + &quot; &quot; + strReturnPeriodYear + &quot;.xlsx&quot;]" />
-                                                                            <ui:RenameFileX DisplayName="Rename File (Attachment)" FilePath="[strAttachmentName]" sap:VirtualizedContainerService.HintSize="699.428571428571,149.142857142857" sap2010:WorkflowViewState.IdRef="RenameFileX_2" KeepExtension="True" NewName="[&quot;Return - Waste Return &quot; + strReturnPeriodForRename + &quot; &quot; + strReturnPeriodYear]" />
-                                                                            <Assign DisplayName="Assign strAttachmentName" sap:VirtualizedContainerService.HintSize="699.428571428571,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_96">
+                                                                            <ui:DeleteFileX DisplayName="Delete File (If Exists)" sap:VirtualizedContainerService.HintSize="580.571428571429,82.2857142857143" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[strWorkingDirectory + &quot;Return - Waste Return &quot; + strReturnPeriodForRename + &quot; &quot; + strReturnPeriodYear + &quot;.xlsx&quot;]" />
+                                                                            <ui:RenameFileX DisplayName="Rename File (Attachment)" FilePath="[strAttachmentName]" sap:VirtualizedContainerService.HintSize="580.571428571429,149.142857142857" sap2010:WorkflowViewState.IdRef="RenameFileX_2" KeepExtension="True" NewName="[&quot;Return - Waste Return &quot; + strReturnPeriodForRename + &quot; &quot; + strReturnPeriodYear]" />
+                                                                            <Assign DisplayName="Assign strAttachmentName" sap:VirtualizedContainerService.HintSize="580.571428571429,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_96">
                                                                               <Assign.To>
                                                                                 <OutArgument x:TypeArguments="x:String">[strAttachmentName]</OutArgument>
                                                                               </Assign.To>
@@ -4673,15 +4672,15 @@
                                                                                 <InArgument x:TypeArguments="x:String">[strWorkingDirectory + "Return - Waste Return " + strReturnPeriodForRename + " " + strReturnPeriodYear + ".xlsx"]</InArgument>
                                                                               </Assign.Value>
                                                                             </Assign>
-                                                                            <Sequence DisplayName="Save Files &amp; Generate Metadata" sap:VirtualizedContainerService.HintSize="699.428571428571,2829.71428571429" sap2010:WorkflowViewState.IdRef="Sequence_96">
+                                                                            <Sequence DisplayName="Save Files &amp; Generate Metadata" sap:VirtualizedContainerService.HintSize="580.571428571429,2006.85714285714" sap2010:WorkflowViewState.IdRef="Sequence_96">
                                                                               <sap:WorkflowViewStateService.ViewState>
                                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                                 </scg:Dictionary>
                                                                               </sap:WorkflowViewStateService.ViewState>
-                                                                              <ui:BuildDataTable DataTable="[dtFileMetadata]" DisplayName="Initialise Metadata Table" sap:VirtualizedContainerService.HintSize="651.428571428571,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_3" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Upload_x0020_Folder&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Document_x0020_Date&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Received_x0020_Date&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;External_x0020_Author&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Disclosure_x0020_Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Disclosure_x0020_Status_x0020_ID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-                                                                              <Sequence DisplayName="Save Request Email &amp; Add Metadata" sap:VirtualizedContainerService.HintSize="651.428571428571,835.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                                                                              <ui:BuildDataTable DataTable="[dtFileMetadata]" DisplayName="Initialise Metadata Table" sap:VirtualizedContainerService.HintSize="532.571428571429,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_3" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Upload_x0020_Folder&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Document_x0020_Date&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Received_x0020_Date&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;External_x0020_Author&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Disclosure_x0020_Status&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Disclosure_x0020_Status_x0020_ID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                                                                              <Sequence DisplayName="Save Request Email &amp; Add Metadata" sap:VirtualizedContainerService.HintSize="532.571428571429,835.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_86">
                                                                                 <Sequence.Variables>
                                                                                   <Variable x:TypeArguments="x:String" Name="strDisclosureStatus" />
                                                                                   <Variable x:TypeArguments="x:String" Name="strDisclosureStatusID" />
@@ -4768,13 +4767,13 @@
                                                                                   </sap:WorkflowViewStateService.ViewState>
                                                                                 </ui:AddDataRow>
                                                                               </Sequence>
-                                                                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtFileMetadata]" DisplayName="Upload Each Document" sap:VirtualizedContainerService.HintSize="651.428571428571,1773.71428571429" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                                                                              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dtFileMetadata]" DisplayName="Upload Each Document" sap:VirtualizedContainerService.HintSize="532.571428571429,950.857142857143" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                                                                                 <ui:ForEachRow.Body>
                                                                                   <ActivityAction x:TypeArguments="sd1:DataRow">
                                                                                     <ActivityAction.Argument>
                                                                                       <DelegateInArgument x:TypeArguments="sd1:DataRow" Name="row" />
                                                                                     </ActivityAction.Argument>
-                                                                                    <Sequence DisplayName="Upload Document" sap:VirtualizedContainerService.HintSize="617.142857142857,1648.57142857143" sap2010:WorkflowViewState.IdRef="Sequence_88">
+                                                                                    <Sequence DisplayName="Upload Document" sap:VirtualizedContainerService.HintSize="498.285714285714,825.714285714286" sap2010:WorkflowViewState.IdRef="Sequence_88">
                                                                                       <Sequence.Variables>
                                                                                         <Variable x:TypeArguments="x:String" Name="strFilePath" />
                                                                                         <Variable x:TypeArguments="x:String" Name="strSelectorDMSFolder" />
@@ -4796,7 +4795,7 @@
                                                                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                                         </scg:Dictionary>
                                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                                      <ui:MultipleAssign DisplayName="Assign File Metadata" sap:VirtualizedContainerService.HintSize="569.142857142857,286.285714285714" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
+                                                                                      <ui:MultipleAssign DisplayName="Assign File Metadata" sap:VirtualizedContainerService.HintSize="450.285714285714,286.285714285714" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
                                                                                         <ui:MultipleAssign.AssignOperations>
                                                                                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
                                                                                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_25">
@@ -4858,7 +4857,7 @@
                                                                                           </scg:List>
                                                                                         </ui:MultipleAssign.AssignOperations>
                                                                                       </ui:MultipleAssign>
-                                                                                      <ui:MultipleAssign DisplayName="Assign Properties Dictionary" sap:VirtualizedContainerService.HintSize="569.142857142857,224.571428571429" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
+                                                                                      <ui:MultipleAssign DisplayName="Assign Properties Dictionary" sap:VirtualizedContainerService.HintSize="450.285714285714,224.571428571429" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
                                                                                         <ui:MultipleAssign.AssignOperations>
                                                                                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                                                                                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
@@ -4904,9 +4903,9 @@
                                                                                           </scg:List>
                                                                                         </ui:MultipleAssign.AssignOperations>
                                                                                       </ui:MultipleAssign>
-                                                                                      <ui:CommentOut DisplayName="Disabled untl further notice" sap:VirtualizedContainerService.HintSize="569.142857142857,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_20">
+                                                                                      <ui:CommentOut DisplayName="Disabled untl further notice" sap:VirtualizedContainerService.HintSize="450.285714285714,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_20">
                                                                                         <ui:CommentOut.Body>
-                                                                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="585.142857142857,835.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_268">
+                                                                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="585.142857142857,952.571428571429" sap2010:WorkflowViewState.IdRef="Sequence_268">
                                                                                             <sap:WorkflowViewStateService.ViewState>
                                                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4920,7 +4919,7 @@
                                                                                                 <InArgument x:TypeArguments="njl:JObject">[JObject.FromObject(dictProperties)]</InArgument>
                                                                                               </Assign.Value>
                                                                                             </Assign>
-                                                                                            <TryCatch DisplayName="Try Upload Document" sap:VirtualizedContainerService.HintSize="537.142857142857,625.142857142857" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+                                                                                            <TryCatch DisplayName="Try Upload Document" sap:VirtualizedContainerService.HintSize="537.142857142857,742.285714285714" sap2010:WorkflowViewState.IdRef="TryCatch_8">
                                                                                               <sap:WorkflowViewStateService.ViewState>
                                                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4928,7 +4927,7 @@
                                                                                                 </scg:Dictionary>
                                                                                               </sap:WorkflowViewStateService.ViewState>
                                                                                               <TryCatch.Try>
-                                                                                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="498.285714285714,385.142857142857" sap2010:WorkflowViewState.IdRef="Sequence_89">
+                                                                                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="498.285714285714,502.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_89">
                                                                                                   <Sequence.Variables>
                                                                                                     <Variable x:TypeArguments="sn:NetworkCredential" Name="credDMSCredential" />
                                                                                                   </Sequence.Variables>
@@ -5006,6 +5005,14 @@
                                                                                                       </Assign.Value>
                                                                                                     </Assign>
                                                                                                   </Sequence>
+                                                                                                  <Assign sap:VirtualizedContainerService.HintSize="450.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_198">
+                                                                                                    <Assign.To>
+                                                                                                      <OutArgument x:TypeArguments="njl:JObject">[jsonOutput]</OutArgument>
+                                                                                                    </Assign.To>
+                                                                                                    <Assign.Value>
+                                                                                                      <InArgument x:TypeArguments="njl:JObject">[JsonConvert.DeserializeObject(Of JObject)(strMetadataFormData)]</InArgument>
+                                                                                                    </Assign.Value>
+                                                                                                  </Assign>
                                                                                                   <Sequence DisplayName="New SPOL Graph call" sap:VirtualizedContainerService.HintSize="450.285714285714,71.4285714285714" sap2010:WorkflowViewState.IdRef="Sequence_260">
                                                                                                     <Sequence.Variables>
                                                                                                       <Variable x:TypeArguments="ss:SecureString" Name="secClientSecret" />
@@ -5152,25 +5159,17 @@
                                                                                           </scg:Dictionary>
                                                                                         </sap:WorkflowViewStateService.ViewState>
                                                                                       </ui:CommentOut>
-                                                                                      <Sequence DisplayName="Ask User to Manuall update Return" sap:VirtualizedContainerService.HintSize="569.142857142857,894.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_269">
+                                                                                      <Sequence DisplayName="Ask User to Manuall update Return" sap:VirtualizedContainerService.HintSize="450.285714285714,71.4285714285714" sap2010:WorkflowViewState.IdRef="Sequence_269">
                                                                                         <Sequence.Variables>
                                                                                           <Variable x:TypeArguments="njl:JObject" Name="jsonOutput" />
                                                                                           <Variable x:TypeArguments="x:Boolean" Name="boolContinue" />
                                                                                         </Sequence.Variables>
                                                                                         <sap:WorkflowViewStateService.ViewState>
                                                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                                           </scg:Dictionary>
                                                                                         </sap:WorkflowViewStateService.ViewState>
-                                                                                        <Assign sap:VirtualizedContainerService.HintSize="521.142857142857,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_198">
-                                                                                          <Assign.To>
-                                                                                            <OutArgument x:TypeArguments="njl:JObject">[jsonOutput]</OutArgument>
-                                                                                          </Assign.To>
-                                                                                          <Assign.Value>
-                                                                                            <InArgument x:TypeArguments="njl:JObject">[JsonConvert.DeserializeObject(Of JObject)(strMetadataFormData)]</InArgument>
-                                                                                          </Assign.Value>
-                                                                                        </Assign>
                                                                                         <ufa:FormActivity CreateFormActivityFileName="{x:Null}" CreateFormActivityFilePath="{x:Null}" Dismissed="{x:Null}" FormFieldsInputData="{x:Null}" IconPath="{x:Null}" LocalCSSFilePath="{x:Null}" SelectedButton="{x:Null}" TimeoutInSeconds="{x:Null}" WindowPositionLeft="{x:Null}" WindowPositionTop="{x:Null}" CreateFormId="03b8dcd3-2d6e-46e6-9282-73f9f00ba98b" DisableMaximizeButton="False" DisableMinimizeButton="True" DisableSanitize="False" DisplayName="EA Herbicides Metadata Popup" FormFieldsOutputData="[strMetadataFormData]" FormHeight="400" FormSchema="%[{&quot;tag&quot;:&quot;h3&quot;,&quot;refreshOnChange&quot;:true,&quot;content&quot;:&quot;{{data.Header}}&quot;,&quot;key&quot;:&quot;label&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false,&quot;label&quot;:&quot;Label&quot;,&quot;type&quot;:&quot;label&quot;},{&quot;label&quot;:&quot;HTML&quot;,&quot;attrs&quot;:[{&quot;attr&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;}],&quot;content&quot;:&quot;I am currently unable upload or populate the return and data&lt;br&gt;\nfor file: \&quot;{{data.Filename}}\&quot;&lt;br&gt;\n&lt;br&gt;\nPlease use the following information to populate it manually and then click OK.&lt;br&gt;\n&lt;br&gt;\nDocument Date: {{data.DocumentDate}}&lt;br&gt;\n&lt;br&gt;\nReceived Date: {{data.ReceivedDate}}&lt;br&gt;\n&lt;br&gt;\nExternal Author: {{data.ExternalAuthor}}&lt;br&gt;\n&lt;br&gt;\nDisclosure Status: {{data.DisclosureStatus}}&lt;br&gt;\n&lt;br&gt;\n&quot;,&quot;refreshOnChange&quot;:true,&quot;key&quot;:&quot;html&quot;,&quot;type&quot;:&quot;htmlelement&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false},{&quot;columns&quot;:[{&quot;components&quot;:[{&quot;label&quot;:&quot;OK&quot;,&quot;theme&quot;:&quot;success&quot;,&quot;size&quot;:&quot;lg&quot;,&quot;disableOnInvalid&quot;:true,&quot;tableView&quot;:false,&quot;key&quot;:&quot;submit&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;type&quot;:&quot;button&quot;,&quot;input&quot;:true,&quot;hideOnChildrenHidden&quot;:false,&quot;isResetData&quot;:false}],&quot;offset&quot;:0,&quot;push&quot;:0,&quot;pull&quot;:0,&quot;size&quot;:&quot;xs&quot;,&quot;width&quot;:3},{&quot;components&quot;:[{&quot;label&quot;:&quot;Stop Process&quot;,&quot;theme&quot;:&quot;danger&quot;,&quot;size&quot;:&quot;lg&quot;,&quot;tableView&quot;:false,&quot;key&quot;:&quot;stop&quot;,&quot;custom&quot;:&quot;instance.emit('executeDoBlock', instance.component);&quot;,&quot;input&quot;:true,&quot;type&quot;:&quot;button&quot;,&quot;hideOnChildrenHidden&quot;:false}],&quot;offset&quot;:0,&quot;push&quot;:0,&quot;pull&quot;:0,&quot;size&quot;:&quot;xs&quot;,&quot;width&quot;:3}],&quot;key&quot;:&quot;columns&quot;,&quot;type&quot;:&quot;columns&quot;,&quot;input&quot;:false,&quot;tableView&quot;:false,&quot;label&quot;:&quot;Columns&quot;}]" FormTheme="{}{&quot;Activities&quot;:[&quot;FORMS&quot;],&quot;Id&quot;:&quot;100120&quot;,&quot;Name&quot;:&quot;Default&quot;,&quot;BaseCss&quot;:&quot;../../assets/css/themes/uipath.bootstrap.min.css&quot;,&quot;ImageSrc&quot;:&quot;../../assets/themeicons/uipath.png&quot;,&quot;OverrideCssUrl&quot;:&quot;../../assets/css/themes/uipath.custom.css&quot;,&quot;UserStyleOverrides&quot;:&quot;&quot;,&quot;Properties&quot;:&quot;&quot;,&quot;IsCustomTheme&quot;:false,&quot;Version&quot;:1,&quot;ThemeVersion&quot;:1}" FormTitle="Failed to Populate Document Metadata" FormWidth="450" GenerateInputFields="False" sap:VirtualizedContainerService.HintSize="521.142857142857,422.857142857143" sap2010:WorkflowViewState.IdRef="FormActivity_6" IsReadOnly="False" MaxColumnsForSchemaGeneration="6" RunDoBlockFirst="False" RunInIsolatedMode="False" StartAsMinimized="False">
                                                                                           <ufa:FormActivity.Body>
                                                                                             <ActivityAction x:TypeArguments="scg:Dictionary(x:String, x:Object)">
@@ -6072,7 +6071,7 @@
                                                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                             </scg:Dictionary>
                                                                                           </sap:WorkflowViewStateService.ViewState>
-                                                                                          <Assign DisplayName="Convert Dictionary → JObject" sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_196">
+                                                                                          <Assign DisplayName="Convert Dictionary → JObject" sap:VirtualizedContainerService.HintSize="569.142857142857,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_196">
                                                                                             <Assign.To>
                                                                                               <OutArgument x:TypeArguments="njl:JObject">[jsonMetaData]</OutArgument>
                                                                                             </Assign.To>
@@ -6080,7 +6079,7 @@
                                                                                               <InArgument x:TypeArguments="njl:JObject">[JObject.FromObject(dictProperties)]</InArgument>
                                                                                             </Assign.Value>
                                                                                           </Assign>
-                                                                                          <TryCatch DisplayName="Try Upload Document" sap:VirtualizedContainerService.HintSize="434.285714285714,54.2857142857143" sap2010:WorkflowViewState.IdRef="TryCatch_12">
+                                                                                          <TryCatch DisplayName="Try Upload Document" sap:VirtualizedContainerService.HintSize="569.142857142857,54.2857142857143" sap2010:WorkflowViewState.IdRef="TryCatch_12">
                                                                                             <sap:WorkflowViewStateService.ViewState>
                                                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -6368,21 +6367,23 @@
                                                                             </ui:ForEachRow>
                                                                           </Sequence>
                                                                         </Switch>
-                                                                        <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Close DMS Browser" sap:VirtualizedContainerService.HintSize="739.428571428571,171.428571428571" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_16" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                          <usa:SharepointApplicationScope.Body>
-                                                                            <ActivityAction x:TypeArguments="us:SharePointContextInfo">
+                                                                        <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="739.428571428571,227.428571428571" sap2010:WorkflowViewState.IdRef="BrowserScope_20">
+                                                                          <ui:BrowserScope.Body>
+                                                                            <ActivityAction x:TypeArguments="x:Object">
                                                                               <ActivityAction.Argument>
-                                                                                <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
+                                                                                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                                                                               </ActivityAction.Argument>
-                                                                              <ui:CloseTab Browser="[browserDMS]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,25.1428571428571" sap2010:WorkflowViewState.IdRef="CloseTab_2" />
+                                                                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,118.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_273">
+                                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                  </scg:Dictionary>
+                                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                                <ui:CloseTab Browser="[browserDMS]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="368,25.1428571428571" sap2010:WorkflowViewState.IdRef="CloseTab_4" />
+                                                                              </Sequence>
                                                                             </ActivityAction>
-                                                                          </usa:SharepointApplicationScope.Body>
-                                                                          <sap:WorkflowViewStateService.ViewState>
-                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                            </scg:Dictionary>
-                                                                          </sap:WorkflowViewStateService.ViewState>
-                                                                        </usa:SharepointApplicationScope>
+                                                                          </ui:BrowserScope.Body>
+                                                                        </ui:BrowserScope>
                                                                         <l:Log_Case IN_strNotes="{x:Null}" in_dblCaseProcessingTime="{x:Null}" DisplayName="Log Case - Local File" sap:VirtualizedContainerService.HintSize="739.428571428571,25.1428571428571" IN_dateCaseEndTime="[Now]" IN_dateCaseStartTime="[in_dateCaseStartTime]" IN_dateCaseTotalTime="[(Now - in_dateCaseStartTime).ToString]" IN_strCaseID="[strPermitNumber]" IN_strFilePath="[in_strWorkLogFilepath]" IN_strOutcome="Success" IN_strUser="[Environment.UserName]" IN_strWorkpackageName="[io_Config(&quot;logF_BusinessProcessName&quot;).ToString]" sap2010:WorkflowViewState.IdRef="Log_Case_5">
                                                                           <l:Log_Case.IN_strOutcomeMessage>
                                                                             <InArgument x:TypeArguments="x:String">
