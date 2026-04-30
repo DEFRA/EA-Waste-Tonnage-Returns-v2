@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SFzA4RxoK7lEuswHrcZ/ni11qpDipKHtwJAAPevrJLBqxYkpS7L3WokK6QlAzCrI1drd4gg3sIJ3zfyrx02WPA==",
+  "dgSpecHash": "5psxeYdaUh1qr8vbdfRnAcQOhr4/zIDCW6cmb9KUK4vTks4Nmf6j+AWWz1uXCRMmBQSy2xx9SFr4dNQnZ/+snA==",
   "success": true,
   "projectFilePath": "C:\\Users\\rj000088\\OneDrive - Defra\\Documents\\GitHub\\EA-Waste-Tonnage-Returns-v2\\EA-Waste-Tonnage-Returns v2\\.local\\",
   "expectedPackageFiles": [
@@ -14,7 +14,7 @@
     "C:\\Users\\rj000088\\.nuget\\packages\\credentials\\1.0.2\\credentials.1.0.2.nupkg.sha512",
     "C:\\Users\\rj000088\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",
     "C:\\Users\\rj000088\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
-    "C:\\Users\\rj000088\\.nuget\\packages\\dracoe.microsoft.graph\\1.0.37\\dracoe.microsoft.graph.1.0.37.nupkg.sha512",
+    "C:\\Users\\rj000088\\.nuget\\packages\\dracoe.microsoft.graph\\1.0.38\\dracoe.microsoft.graph.1.0.38.nupkg.sha512",
     "C:\\Users\\rj000088\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
     "C:\\Users\\rj000088\\.nuget\\packages\\extended.wpf.toolkit\\2.8.0\\extended.wpf.toolkit.2.8.0.nupkg.sha512",
     "C:\\Users\\rj000088\\.nuget\\packages\\google.apis\\1.43.0\\google.apis.1.43.0.nupkg.sha512",
