@@ -1,0 +1,169 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="DMSGraphTest" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1156,1436.57142857143" sap2010:WorkflowViewState.IdRef="DMSGraphTest_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:da="clr-namespace:DRACOE_Microsoft_Graph.Authentication;assembly=DRACOE Microsoft Graph" xmlns:ds="clr-namespace:DRACOE_Microsoft_Graph.SharePoint;assembly=DRACOE Microsoft Graph" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>DRACOE_Microsoft_Graph.Authentication</x:String>
+      <x:String>DRACOE_Microsoft_Graph.SharePoint</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>UiPath.Web</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>DRACOE Microsoft Graph</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
+      <AssemblyReference>UiPath.Web</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="DMSGraphTest" sap:VirtualizedContainerService.HintSize="614.857142857143,1371.42857142857" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="New SPOL Graph call" sap:VirtualizedContainerService.HintSize="566.857142857143,1274.85714285714" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="ss:SecureString" Name="secClientSecret" />
+        <Variable x:TypeArguments="x:String" Name="strClientId" />
+        <Variable x:TypeArguments="ss:SecureString" Name="secStrBearerToken" />
+        <Variable x:TypeArguments="x:String" Name="strSiteID" />
+        <Variable x:TypeArguments="x:String" Name="strListID" />
+        <Variable x:TypeArguments="x:String" Name="strDestinationFilePath" />
+        <Variable x:TypeArguments="x:String" Name="test" />
+        <Variable x:TypeArguments="x:Int32" Name="teststatus" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="SPOLCred" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="518.857142857143,82.2857142857143" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[secClientSecret]" Username="[strClientId]" />
+      <da:Get_Bearer_Token DisplayName="Get Bearer Token" sap:VirtualizedContainerService.HintSize="518.857142857143,248.571428571429" sap2010:WorkflowViewState.IdRef="Get_Bearer_Token_1" in_strClientID="[(New System.Net.NetworkCredential(&quot;&quot;, strClientId)).SecurePassword]" in_strClientSecret="[secClientSecret]" in_strTenantID="[(New System.Net.NetworkCredential(&quot;&quot;, &quot;770a2450-0227-4c62-90c7-4e38537f1102&quot;)).SecurePassword]" out_strBearerToken="[secStrBearerToken]" />
+      <ds:Get_Site_ID DisplayName="Get Site ID" sap:VirtualizedContainerService.HintSize="518.857142857143,25.1428571428571" sap2010:WorkflowViewState.IdRef="Get_Site_ID_1" in_strBearerToken="[secStrBearerToken]" in_strSite="sites/EADMSProdhomesite" in_strTenancy="defra.sharepoint.com" out_strSiteID="[strSiteID]" />
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="518.857142857143,64.5714285714286" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[new System.Net.NetworkCredential(string.Empty, secStrBearerToken).Password]" />
+      <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" OAuth2Token="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/xml" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="https://graph.microsoft.com/v1.0/sites/defra.sharepoint.com:/sites/EADMSProdhomesite" sap:VirtualizedContainerService.HintSize="518.857142857143,72" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="GET" Result="[test]" StatusCode="[teststatus]" TimeoutMS="6000">
+        <ui:HttpClient.Attachments>
+          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+        </ui:HttpClient.Attachments>
+        <ui:HttpClient.Cookies>
+          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+        </ui:HttpClient.Cookies>
+        <ui:HttpClient.Headers>
+          <InArgument x:TypeArguments="x:String" x:Key="Authorization">["Bearer " &amp; (New System.Net.NetworkCredential("", secStrBearerToken)).Password]</InArgument>
+        </ui:HttpClient.Headers>
+        <ui:HttpClient.Parameters>
+          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+        </ui:HttpClient.Parameters>
+        <ui:HttpClient.UrlSegments>
+          <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+        </ui:HttpClient.UrlSegments>
+      </ui:HttpClient>
+      <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="518.857142857143,64.5714285714286" sap2010:WorkflowViewState.IdRef="WriteLine_2" />
+      <ds:Get_List_ID DisplayName="Get List ID" sap:VirtualizedContainerService.HintSize="518.857142857143,25.1428571428571" sap2010:WorkflowViewState.IdRef="Get_List_ID_1" in_strBearerToken="[secStrBearerToken]" in_strListDisplayName="LIB1" in_strSiteID="[strSiteID]" out_strListID="[strListID]" />
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="518.857142857143,372" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+        <ui:CommentOut.Body>
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="482.285714285714,292.571428571429" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign DisplayName="Build Destination Filepath" sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[strDestinationFilePAth]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[strDMSURL + "/" + strPermitLibrary+"/"+strPermitNumber+"/returns"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ds:Upload_Small_File DisplayName="Upload Small File" sap:VirtualizedContainerService.HintSize="434.285714285714,25.1428571428571" sap2010:WorkflowViewState.IdRef="Upload_Small_File_1" in_DestinationFilePath="[strDMSURL + &quot;/&quot; + strPermitLibrary+&quot;/&quot;+strPermitNumber+&quot;/returns&quot;]" in_LocalFilePath="[strAttachmentName]" in_strBearerToken="[secStrBearerToken]">
+              <ds:Upload_Small_File.in_strListID>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ds:Upload_Small_File.in_strListID>
+              <ds:Upload_Small_File.in_strSiteID>
+                <InArgument x:TypeArguments="x:String">
+                  <Literal x:TypeArguments="x:String" Value="" />
+                </InArgument>
+              </ds:Upload_Small_File.in_strSiteID>
+            </ds:Upload_Small_File>
+            <ds:Update_File_MetaData DisplayName="Update File MetaData" sap:VirtualizedContainerService.HintSize="434.285714285714,25.1428571428571" sap2010:WorkflowViewState.IdRef="Update_File_MetaData_1" in_DestinationFilePath="[strDMSURL + &quot;/&quot; + strPermitLibrary+&quot;/&quot;+strPermitNumber+&quot;/returns&quot;]" in_jsonMetaData="[jsonMetaData]" in_strBearerToken="[secStrBearerToken]" in_strListID="[strListID]" in_strSiteID="[strSiteID]" />
+          </Sequence>
+        </ui:CommentOut.Body>
+      </ui:CommentOut>
+    </Sequence>
+  </Sequence>
+</Activity>

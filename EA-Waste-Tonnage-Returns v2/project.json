@@ -4,17 +4,18 @@
   "description": "Development Template",
   "main": "Main.xaml",
   "dependencies": {
+    "DRACOE.Microsoft.Graph": "[1.0.37]",
     "Logging": "[1.0.16]",
     "Pop.Ups": "[1.0.3]",
     "Reusable.Components": "[1.0.35]",
     "UiPath.Credentials.Activities": "[2.1.0]",
-    "UiPath.Excel.Activities": "[2.22.3]",
+    "UiPath.Excel.Activities": "[2.24.4]",
     "UiPath.Form.Activities": "[1.8.0]",
     "UiPath.Mail.Activities": "[1.9.3]",
     "UiPath.MicrosoftOffice365.Activities": "[2.0.3]",
     "UiPath.System.Activities": "21.10.3",
     "UiPath.UIAutomation.Activities": "[20.4.2]",
-    "UiPath.WebAPI.Activities": "[1.11.1]",
+    "UiPath.WebAPI.Activities": "[1.20.1]",
     "UiPathTeam.FileConverter.Activities": "[0.0.6814.35837]",
     "UiPathTeam.SharePoint.Activities": "[1.7.0]"
   },
@@ -22,7 +23,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.6.0",
-  "projectVersion": "1.0.2-alpha.1",
+  "projectVersion": "1.0.2-alpha.15",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -49,9 +50,21 @@
       "privateWorkflows": []
     },
     "processOptions": {
-      "ignoredFiles": []
+      "ignoredFiles": [
+        "Test 2.xaml",
+        "Test Sequence.xaml",
+        "Test.xaml"
+      ]
     },
-    "fileInfoCollection": [],
+    "fileInfoCollection": [
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "3f2d42f7-d708-4112-99ce-3b03e44a5b2b",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "TestCase.xaml"
+      }
+    ],
     "modernBehavior": false,
     "saveToCloud": false
   },
