@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1509.14285714286,1115.42857142857</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>838.857142857143,1115.42857142857</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_Transaction_2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -437,18 +437,18 @@
                   <av:PointCollection x:Key="ConnectorLocation">300,447.785714285714 300,496.5</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For each waste return in working directory" sap:VirtualizedContainerService.HintSize="1162.28571428571,2289.71428571429" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[System.IO.Directory.GetFiles(strWorkingDirectory)]">
+              <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For each waste return in working directory" sap:VirtualizedContainerService.HintSize="1162.28571428571,2459.42857142857" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[System.IO.Directory.GetFiles(strWorkingDirectory)]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="x:Object">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
                     </ActivityAction.Argument>
-                    <If Condition="[Path.GetExtension(item.ToString) = &quot;.eml&quot;]" sap:VirtualizedContainerService.HintSize="1125.71428571429,2160.57142857143" sap2010:WorkflowViewState.IdRef="If_3">
+                    <If Condition="[Path.GetExtension(item.ToString) = &quot;.eml&quot;]" sap:VirtualizedContainerService.HintSize="1125.71428571429,2330.28571428571" sap2010:WorkflowViewState.IdRef="If_3">
                       <If.Then>
                         <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230.857142857143,64.5714285714286" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Not waste return file" />
                       </If.Then>
                       <If.Else>
-                        <Sequence sap:VirtualizedContainerService.HintSize="849.142857142857,1994.85714285714" sap2010:WorkflowViewState.IdRef="Sequence_220">
+                        <Sequence sap:VirtualizedContainerService.HintSize="849.142857142857,2164.57142857143" sap2010:WorkflowViewState.IdRef="Sequence_220">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="strReturnPeriod" />
                             <Variable x:TypeArguments="ui:GenericValue" Name="strReturnPeriodYear" />
@@ -458,21 +458,22 @@
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="Process &amp; Log Waste Return" sap:VirtualizedContainerService.HintSize="801.142857142857,1901.71428571429" sap2010:WorkflowViewState.IdRef="Sequence_221">
+                          <Sequence DisplayName="Process &amp; Log Waste Return" sap:VirtualizedContainerService.HintSize="801.142857142857,2071.42857142857" sap2010:WorkflowViewState.IdRef="Sequence_221">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="753.142857142857,1805.14285714286" sap2010:WorkflowViewState.IdRef="TryCatch_15">
+                            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="753.142857142857,1974.85714285714" sap2010:WorkflowViewState.IdRef="TryCatch_15">
                               <TryCatch.Try>
-                                <Sequence sap:VirtualizedContainerService.HintSize="714.285714285714,1565.14285714286" sap2010:WorkflowViewState.IdRef="Sequence_224">
+                                <Sequence sap:VirtualizedContainerService.HintSize="714.285714285714,1734.85714285714" sap2010:WorkflowViewState.IdRef="Sequence_224">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="666.285714285714,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_71" Level="Info" Message="[&quot;Attempting to process Waste Return&quot;]" />
+                                  <ui:KillProcess AppliesTo="{x:Null}" ContinueOnError="{x:Null}" Process="{x:Null}" DisplayName="Kill Process" sap:VirtualizedContainerService.HintSize="666.285714285714,137.714285714286" sap2010:WorkflowViewState.IdRef="KillProcess_1" ProcessName="Excel" />
                                   <Flowchart DisplayName="Process &amp; Log Waste Return" sap:VirtualizedContainerService.HintSize="666.285714285714,1342.85714285714" sap2010:WorkflowViewState.IdRef="Flowchart_4">
                                     <Flowchart.Variables>
                                       <Variable x:TypeArguments="x:String" Name="strDeclarationName" />
@@ -1990,7 +1991,7 @@
                                                                                                                       <av:PointCollection x:Key="ConnectorLocation">300,1957.78571428571 300,1987.78571428571 299.607142857143,1987.78571428571 299.607142857143,2006.5</av:PointCollection>
                                                                                                                     </scg:Dictionary>
                                                                                                                   </sap:WorkflowViewStateService.ViewState>
-                                                                                                                  <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Import NEW Spreadsheet" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="WindowScope_12" InformativeScreenshot="2b886d29ef6101da28df9a157279b98c" Selector="&lt;wnd app='msaccess.exe' cls='OFormPopup' isremoteapp='1' title='Import NEW Spreadsheet' /&gt;">
+                                                                                                                  <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Import NEW Spreadsheet" sap:VirtualizedContainerService.HintSize="200,54.2857142857143" sap2010:WorkflowViewState.IdRef="WindowScope_12" InformativeScreenshot="2b886d29ef6101da28df9a157279b98c" Selector="&lt;wnd app='msaccess.exe' cls='OFormPopup' isremoteapp='1' title='Import NEW Spreadsheet' /&gt;">
                                                                                                                     <ui:WindowScope.Body>
                                                                                                                       <ActivityAction x:TypeArguments="x:Object">
                                                                                                                         <ActivityAction.Argument>
@@ -2840,41 +2841,6 @@
                                                                     </ActivityAction>
                                                                   </ui:OpenBrowser.Body>
                                                                 </ui:OpenBrowser>
-                                                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="444.571428571429,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_7">
-                                                                  <ui:CommentOut.Body>
-                                                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="526.857142857143,358.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_248">
-                                                                      <sap:WorkflowViewStateService.ViewState>
-                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                        </scg:Dictionary>
-                                                                      </sap:WorkflowViewStateService.ViewState>
-                                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="522.285714285714,265.142857142857" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_1" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                        <usa:SharepointApplicationScope.Body>
-                                                                          <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                                                                            <ActivityAction.Argument>
-                                                                              <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                                                                            </ActivityAction.Argument>
-                                                                            <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" BrowserType="Edge" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="444.571428571429,121.714285714286" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[browserDMS]" Url="[io_Config(&quot;DMSHomeUrl&quot;).ToString]">
-                                                                              <ui:OpenBrowser.Body>
-                                                                                <ActivityAction x:TypeArguments="x:Object">
-                                                                                  <ActivityAction.Argument>
-                                                                                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                  </ActivityAction.Argument>
-                                                                                </ActivityAction>
-                                                                              </ui:OpenBrowser.Body>
-                                                                            </ui:OpenBrowser>
-                                                                          </ActivityAction>
-                                                                        </usa:SharepointApplicationScope.Body>
-                                                                      </usa:SharepointApplicationScope>
-                                                                    </Sequence>
-                                                                  </ui:CommentOut.Body>
-                                                                  <sap:WorkflowViewStateService.ViewState>
-                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                                    </scg:Dictionary>
-                                                                  </sap:WorkflowViewStateService.ViewState>
-                                                                </ui:CommentOut>
                                                               </Sequence>
                                                               <FlowStep.Next>
                                                                 <FlowStep x:Name="__ReferenceID69" sap2010:WorkflowViewState.IdRef="FlowStep_3">
@@ -2912,53 +2878,6 @@
                                                                         </ActivityAction>
                                                                       </ui:BrowserScope.Body>
                                                                     </ui:BrowserScope>
-                                                                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434.285714285714,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_8">
-                                                                      <ui:CommentOut.Body>
-                                                                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="516.571428571429,490.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_249">
-                                                                          <sap:WorkflowViewStateService.ViewState>
-                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                            </scg:Dictionary>
-                                                                          </sap:WorkflowViewStateService.ViewState>
-                                                                          <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468.571428571429,397.142857142857" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_2" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                            <usa:SharepointApplicationScope.Body>
-                                                                              <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                                                                                <ActivityAction.Argument>
-                                                                                  <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                                                                                </ActivityAction.Argument>
-                                                                                <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser - Check_For_Home_Screen" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="1a0e8dd115ed6fe27c361e5e97c751af">
-                                                                                  <ui:BrowserScope.Body>
-                                                                                    <ActivityAction x:TypeArguments="x:Object">
-                                                                                      <ActivityAction.Argument>
-                                                                                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                      </ActivityAction.Argument>
-                                                                                      <ui:UiElementExists DisplayName="Element 'Document Management Service' Exists" Exists="[boolHomeScreen]" sap:VirtualizedContainerService.HintSize="334.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
-                                                                                        <ui:UiElementExists.Target>
-                                                                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a15bacd9-f5b1-43f2-b12b-b3a803976b4b" InformativeScreenshot="137f44438eb51c14fd1606b8290076c6" Selector="&lt;webctrl aaname='Document Management Service' tag='A' /&gt;">
-                                                                                            <ui:Target.TimeoutMS>
-                                                                                              <InArgument x:TypeArguments="x:Int32" />
-                                                                                            </ui:Target.TimeoutMS>
-                                                                                            <ui:Target.WaitForReady>
-                                                                                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                                                            </ui:Target.WaitForReady>
-                                                                                          </ui:Target>
-                                                                                        </ui:UiElementExists.Target>
-                                                                                      </ui:UiElementExists>
-                                                                                    </ActivityAction>
-                                                                                  </ui:BrowserScope.Body>
-                                                                                </ui:BrowserScope>
-                                                                              </ActivityAction>
-                                                                            </usa:SharepointApplicationScope.Body>
-                                                                          </usa:SharepointApplicationScope>
-                                                                        </Sequence>
-                                                                      </ui:CommentOut.Body>
-                                                                      <sap:WorkflowViewStateService.ViewState>
-                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                                        </scg:Dictionary>
-                                                                      </sap:WorkflowViewStateService.ViewState>
-                                                                    </ui:CommentOut>
                                                                   </Sequence>
                                                                   <FlowStep.Next>
                                                                     <FlowDecision x:Name="__ReferenceID76" Condition="[boolHomeScreen]" DisplayName="Home Screen?" sap:VirtualizedContainerService.HintSize="82.2857142857143,86.8571428571429" sap2010:WorkflowViewState.IdRef="FlowDecision_26">
@@ -3062,83 +2981,6 @@
                                                                                     </ActivityAction>
                                                                                   </ui:BrowserScope.Body>
                                                                                 </ui:BrowserScope>
-                                                                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="450.285714285714,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_9">
-                                                                                  <ui:CommentOut.Body>
-                                                                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="532.571428571429,807.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_251">
-                                                                                      <sap:WorkflowViewStateService.ViewState>
-                                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                        </scg:Dictionary>
-                                                                                      </sap:WorkflowViewStateService.ViewState>
-                                                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="484.571428571429,714.285714285714" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_5" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                                        <usa:SharepointApplicationScope.Body>
-                                                                                          <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                                                                                            <ActivityAction.Argument>
-                                                                                              <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                                                                                            </ActivityAction.Argument>
-                                                                                            <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser - Search_For_Permit_Number" sap:VirtualizedContainerService.HintSize="450.285714285714,570.857142857143" sap2010:WorkflowViewState.IdRef="BrowserScope_4" InformativeScreenshot="1c841442f149fac25b52211068281414">
-                                                                                              <ui:BrowserScope.Body>
-                                                                                                <ActivityAction x:TypeArguments="x:Object">
-                                                                                                  <ActivityAction.Argument>
-                                                                                                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                                  </ActivityAction.Argument>
-                                                                                                  <Sequence sap:VirtualizedContainerService.HintSize="416,424" sap2010:WorkflowViewState.IdRef="Sequence_68">
-                                                                                                    <sap:WorkflowViewStateService.ViewState>
-                                                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                                      </scg:Dictionary>
-                                                                                                    </sap:WorkflowViewStateService.ViewState>
-                                                                                                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" ContinueOnError="True" DisplayName="Type Into 'Search by permit number..' Input Box" EmptyField="True" sap:VirtualizedContainerService.HintSize="368,134.857142857143" sap2010:WorkflowViewState.IdRef="TypeInto_3" SimulateType="True" Text="[strFullPermitNumberWithType]">
-                                                                                                      <ui:TypeInto.Target>
-                                                                                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d84a02ae-d778-4b65-8533-da01066ae00b" InformativeScreenshot="18f3eec9d4286f843beac914a0ff513e" Selector="&lt;webctrl id='SearchBox*' tag='INPUT' /&gt;&#xA;">
-                                                                                                          <ui:Target.TimeoutMS>
-                                                                                                            <InArgument x:TypeArguments="x:Int32" />
-                                                                                                          </ui:Target.TimeoutMS>
-                                                                                                          <ui:Target.WaitForReady>
-                                                                                                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                                                                          </ui:Target.WaitForReady>
-                                                                                                        </ui:Target>
-                                                                                                      </ui:TypeInto.Target>
-                                                                                                    </ui:TypeInto>
-                                                                                                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Search Arrow Button" sap:VirtualizedContainerService.HintSize="368,106.857142857143" sap2010:WorkflowViewState.IdRef="Click_16" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
-                                                                                                      <ui:Click.CursorPosition>
-                                                                                                        <ui:CursorPosition Position="Center">
-                                                                                                          <ui:CursorPosition.OffsetX>
-                                                                                                            <InArgument x:TypeArguments="x:Int32" />
-                                                                                                          </ui:CursorPosition.OffsetX>
-                                                                                                          <ui:CursorPosition.OffsetY>
-                                                                                                            <InArgument x:TypeArguments="x:Int32" />
-                                                                                                          </ui:CursorPosition.OffsetY>
-                                                                                                        </ui:CursorPosition>
-                                                                                                      </ui:Click.CursorPosition>
-                                                                                                      <ui:Click.Target>
-                                                                                                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="046156ce-9746-4ba1-b990-a4d939d89723" InformativeScreenshot="dbdfbaf39f5df9308d200fa09820a055" Selector="&lt;webctrl aaname='' tag='BUTTON' /&gt;&#xA;">
-                                                                                                          <ui:Target.TimeoutMS>
-                                                                                                            <InArgument x:TypeArguments="x:Int32" />
-                                                                                                          </ui:Target.TimeoutMS>
-                                                                                                          <ui:Target.WaitForReady>
-                                                                                                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                                                                          </ui:Target.WaitForReady>
-                                                                                                        </ui:Target>
-                                                                                                      </ui:Click.Target>
-                                                                                                    </ui:Click>
-                                                                                                    <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="368,25.1428571428571" sap2010:WorkflowViewState.IdRef="Delay_7" />
-                                                                                                  </Sequence>
-                                                                                                </ActivityAction>
-                                                                                              </ui:BrowserScope.Body>
-                                                                                            </ui:BrowserScope>
-                                                                                          </ActivityAction>
-                                                                                        </usa:SharepointApplicationScope.Body>
-                                                                                      </usa:SharepointApplicationScope>
-                                                                                    </Sequence>
-                                                                                  </ui:CommentOut.Body>
-                                                                                  <sap:WorkflowViewStateService.ViewState>
-                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                                                    </scg:Dictionary>
-                                                                                  </sap:WorkflowViewStateService.ViewState>
-                                                                                </ui:CommentOut>
                                                                               </Sequence>
                                                                               <FlowStep.Next>
                                                                                 <FlowStep x:Name="__ReferenceID72" sap2010:WorkflowViewState.IdRef="FlowStep_2">
@@ -3155,7 +2997,7 @@
                                                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                       </scg:Dictionary>
                                                                                     </sap:WorkflowViewStateService.ViewState>
-                                                                                    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Check_For_Search_Result" sap:VirtualizedContainerService.HintSize="659.428571428571,677.142857142857" sap2010:WorkflowViewState.IdRef="BrowserScope_13" InformativeScreenshot="f449761d4c753420135b6ba7d0c260b8" Selector="&lt;html app='msedge.exe' title='Document Management Service - Search' /&gt;">
+                                                                                    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Check_For_Search_Result" sap:VirtualizedContainerService.HintSize="540.571428571429,677.142857142857" sap2010:WorkflowViewState.IdRef="BrowserScope_13" InformativeScreenshot="f449761d4c753420135b6ba7d0c260b8" Selector="&lt;html app='msedge.exe' title='Document Management Service - Search' /&gt;">
                                                                                       <ui:BrowserScope.Body>
                                                                                         <ActivityAction x:TypeArguments="x:Object">
                                                                                           <ActivityAction.Argument>
@@ -3197,68 +3039,6 @@
                                                                                         </ActivityAction>
                                                                                       </ui:BrowserScope.Body>
                                                                                     </ui:BrowserScope>
-                                                                                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="659.428571428571,993.142857142857" sap2010:WorkflowViewState.IdRef="CommentOut_10">
-                                                                                      <ui:CommentOut.Body>
-                                                                                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="622.857142857143,913.714285714286" sap2010:WorkflowViewState.IdRef="Sequence_254">
-                                                                                          <sap:WorkflowViewStateService.ViewState>
-                                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                            </scg:Dictionary>
-                                                                                          </sap:WorkflowViewStateService.ViewState>
-                                                                                          <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="574.857142857143,820.571428571429" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_4" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                                            <usa:SharepointApplicationScope.Body>
-                                                                                              <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                                                                                                <ActivityAction.Argument>
-                                                                                                  <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                                                                                                </ActivityAction.Argument>
-                                                                                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Check_For_Search_Result" sap:VirtualizedContainerService.HintSize="540.571428571429,677.142857142857" sap2010:WorkflowViewState.IdRef="BrowserScope_3" InformativeScreenshot="f449761d4c753420135b6ba7d0c260b8" Selector="&lt;html app='msedge.exe' title='Document Management Service - Search' /&gt;">
-                                                                                                  <ui:BrowserScope.Body>
-                                                                                                    <ActivityAction x:TypeArguments="x:Object">
-                                                                                                      <ActivityAction.Argument>
-                                                                                                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                                      </ActivityAction.Argument>
-                                                                                                      <Sequence sap:VirtualizedContainerService.HintSize="506.285714285714,530.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_212">
-                                                                                                        <sap:WorkflowViewStateService.ViewState>
-                                                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                                          </scg:Dictionary>
-                                                                                                        </sap:WorkflowViewStateService.ViewState>
-                                                                                                        <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="458.285714285714,25.1428571428571" sap2010:WorkflowViewState.IdRef="Delay_8" />
-                                                                                                        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="458.285714285714,380" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="1" RetryInterval="00:00:02">
-                                                                                                          <ui:RetryScope.ActivityBody>
-                                                                                                            <ActivityAction>
-                                                                                                              <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="416,200" sap2010:WorkflowViewState.IdRef="Sequence_213">
-                                                                                                                <sap:WorkflowViewStateService.ViewState>
-                                                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                                                  </scg:Dictionary>
-                                                                                                                </sap:WorkflowViewStateService.ViewState>
-                                                                                                                <ui:UiElementExists DisplayName="Element 'results for' Exists" Exists="[boolSearchResultsFullPermitNum]" sap:VirtualizedContainerService.HintSize="368,106.857142857143" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
-                                                                                                                  <ui:UiElementExists.Target>
-                                                                                                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a15bacd9-f5b1-43f2-b12b-b3a803976b4b" InformativeScreenshot="2aa9ee7d0805cfe0530193c8db636be5" Selector="&lt;webctrl tag='LABEL' aaname='*results for*' /&gt;" TimeoutMS="10000">
-                                                                                                                      <ui:Target.WaitForReady>
-                                                                                                                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                                                                                      </ui:Target.WaitForReady>
-                                                                                                                    </ui:Target>
-                                                                                                                  </ui:UiElementExists.Target>
-                                                                                                                </ui:UiElementExists>
-                                                                                                              </Sequence>
-                                                                                                            </ActivityAction>
-                                                                                                          </ui:RetryScope.ActivityBody>
-                                                                                                          <ui:RetryScope.Condition>
-                                                                                                            <ActivityFunc x:TypeArguments="x:Boolean" />
-                                                                                                          </ui:RetryScope.Condition>
-                                                                                                        </ui:RetryScope>
-                                                                                                      </Sequence>
-                                                                                                    </ActivityAction>
-                                                                                                  </ui:BrowserScope.Body>
-                                                                                                </ui:BrowserScope>
-                                                                                              </ActivityAction>
-                                                                                            </usa:SharepointApplicationScope.Body>
-                                                                                          </usa:SharepointApplicationScope>
-                                                                                        </Sequence>
-                                                                                      </ui:CommentOut.Body>
-                                                                                    </ui:CommentOut>
                                                                                   </Sequence>
                                                                                   <FlowStep.Next>
                                                                                     <FlowDecision x:Name="__ReferenceID70" Condition="[boolSearchResultsFullPermitNum]" DisplayName="Search Results?" sap:VirtualizedContainerService.HintSize="87.4285714285714,86.8571428571429" sap2010:WorkflowViewState.IdRef="FlowDecision_25">
@@ -3318,63 +3098,6 @@
                                                                                                 </ActivityAction>
                                                                                               </ui:BrowserScope.Body>
                                                                                             </ui:BrowserScope>
-                                                                                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434.285714285714,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_11">
-                                                                                              <ui:CommentOut.Body>
-                                                                                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="516.571428571429,490.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_255">
-                                                                                                  <sap:WorkflowViewStateService.ViewState>
-                                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                                    </scg:Dictionary>
-                                                                                                  </sap:WorkflowViewStateService.ViewState>
-                                                                                                  <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468.571428571429,397.142857142857" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_3" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                                                    <usa:SharepointApplicationScope.Body>
-                                                                                                      <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                                                                                                        <ActivityAction.Argument>
-                                                                                                          <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                                                                                                        </ActivityAction.Argument>
-                                                                                                        <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser - Click_Permit_Number_Folder_Link" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="1c841442f149fac25b52211068281414">
-                                                                                                          <ui:BrowserScope.Body>
-                                                                                                            <ActivityAction x:TypeArguments="x:Object">
-                                                                                                              <ActivityAction.Argument>
-                                                                                                                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                                              </ActivityAction.Argument>
-                                                                                                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click IN_strPermitNumber Link" sap:VirtualizedContainerService.HintSize="334.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="Click_15" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
-                                                                                                                <ui:Click.CursorPosition>
-                                                                                                                  <ui:CursorPosition Position="Center">
-                                                                                                                    <ui:CursorPosition.OffsetX>
-                                                                                                                      <InArgument x:TypeArguments="x:Int32" />
-                                                                                                                    </ui:CursorPosition.OffsetX>
-                                                                                                                    <ui:CursorPosition.OffsetY>
-                                                                                                                      <InArgument x:TypeArguments="x:Int32" />
-                                                                                                                    </ui:CursorPosition.OffsetY>
-                                                                                                                  </ui:CursorPosition>
-                                                                                                                </ui:Click.CursorPosition>
-                                                                                                                <ui:Click.Target>
-                                                                                                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="db7b362c-6798-4f42-b558-6e693d238b18" InformativeScreenshot="bda8cde2cdc8121caded1fd47671c90e" Selector="[&quot;&lt;webctrl aaname='(.*&quot;+strFullPermitNumberWithType+&quot; [^-].*)' matching:aaname='regex' tag='SPAN' /&gt;&quot;]">
-                                                                                                                    <ui:Target.TimeoutMS>
-                                                                                                                      <InArgument x:TypeArguments="x:Int32" />
-                                                                                                                    </ui:Target.TimeoutMS>
-                                                                                                                    <ui:Target.WaitForReady>
-                                                                                                                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                                                                                    </ui:Target.WaitForReady>
-                                                                                                                  </ui:Target>
-                                                                                                                </ui:Click.Target>
-                                                                                                              </ui:Click>
-                                                                                                            </ActivityAction>
-                                                                                                          </ui:BrowserScope.Body>
-                                                                                                        </ui:BrowserScope>
-                                                                                                      </ActivityAction>
-                                                                                                    </usa:SharepointApplicationScope.Body>
-                                                                                                  </usa:SharepointApplicationScope>
-                                                                                                </Sequence>
-                                                                                              </ui:CommentOut.Body>
-                                                                                              <sap:WorkflowViewStateService.ViewState>
-                                                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                                                                </scg:Dictionary>
-                                                                                              </sap:WorkflowViewStateService.ViewState>
-                                                                                            </ui:CommentOut>
                                                                                           </Sequence>
                                                                                           <FlowStep.Next>
                                                                                             <FlowStep x:Name="__ReferenceID78">
@@ -3454,44 +3177,6 @@
                                                             <x:Reference>__ReferenceID75</x:Reference>
                                                             <x:Reference>__ReferenceID76</x:Reference>
                                                             <x:Reference>__ReferenceID77</x:Reference>
-                                                            <FlowStep>
-                                                              <sap:WorkflowViewStateService.ViewState>
-                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                  <av:Point x:Key="ShapeLocation">330,892.857142857143</av:Point>
-                                                                  <av:Size x:Key="ShapeSize">200,54.2857142857143</av:Size>
-                                                                </scg:Dictionary>
-                                                              </sap:WorkflowViewStateService.ViewState>
-                                                              <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_12">
-                                                                <ui:CommentOut.Body>
-                                                                  <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_256">
-                                                                    <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468.571428571429,280.571428571429" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_6" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                      <usa:SharepointApplicationScope.Body>
-                                                                        <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                                                                          <ActivityAction.Argument>
-                                                                            <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                                                                          </ActivityAction.Argument>
-                                                                          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="434.285714285714,134.285714285714" sap2010:WorkflowViewState.IdRef="BrowserScope_5" Selector="&lt;html app='msedge.exe' title='Document Management Service - Search' /&gt;">
-                                                                            <ui:BrowserScope.Body>
-                                                                              <ActivityAction x:TypeArguments="x:Object">
-                                                                                <ActivityAction.Argument>
-                                                                                  <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                </ActivityAction.Argument>
-                                                                                <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,25.1428571428571" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
-                                                                              </ActivityAction>
-                                                                            </ui:BrowserScope.Body>
-                                                                          </ui:BrowserScope>
-                                                                        </ActivityAction>
-                                                                      </usa:SharepointApplicationScope.Body>
-                                                                      <sap:WorkflowViewStateService.ViewState>
-                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                        </scg:Dictionary>
-                                                                      </sap:WorkflowViewStateService.ViewState>
-                                                                    </usa:SharepointApplicationScope>
-                                                                  </Sequence>
-                                                                </ui:CommentOut.Body>
-                                                              </ui:CommentOut>
-                                                            </FlowStep>
                                                             <x:Reference>__ReferenceID78</x:Reference>
                                                           </Flowchart>
                                                           <FlowStep.Next>
@@ -3562,16 +3247,16 @@
                                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                           </scg:Dictionary>
                                                                         </sap:WorkflowViewStateService.ViewState>
-                                                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518.857142857143,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;Attempting to Click Returns Folder&quot;]" />
-                                                                        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="518.857142857143,54.2857142857143" sap2010:WorkflowViewState.IdRef="TryCatch_17">
+                                                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="473.142857142857,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_26" Level="Info" Message="[&quot;Attempting to Click Returns Folder&quot;]" />
+                                                                        <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="473.142857142857,493.714285714286" sap2010:WorkflowViewState.IdRef="TryCatch_17">
                                                                           <sap:WorkflowViewStateService.ViewState>
                                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                             </scg:Dictionary>
                                                                           </sap:WorkflowViewStateService.ViewState>
                                                                           <TryCatch.Try>
-                                                                            <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Click_Returns_Folder" sap:VirtualizedContainerService.HintSize="320,54.2857142857143" sap2010:WorkflowViewState.IdRef="BrowserScope_17" InformativeScreenshot="7f1d8cb25374e78ec5001a831beadbc8" Selector="&lt;html app='msedge.exe' title='Document Management Service - Permit Library *' /&gt;">
+                                                                            <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Click_Returns_Folder" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="BrowserScope_17" InformativeScreenshot="7f1d8cb25374e78ec5001a831beadbc8" Selector="&lt;html app='msedge.exe' title='Document Management Service - Permit Library *' /&gt;">
                                                                               <ui:BrowserScope.Body>
                                                                                 <ActivityAction x:TypeArguments="x:Object">
                                                                                   <ActivityAction.Argument>
@@ -3589,7 +3274,7 @@
                                                                                       </ui:CursorPosition>
                                                                                     </ui:Click.CursorPosition>
                                                                                     <ui:Click.Target>
-                                                                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="db7b362c-6798-4f42-b558-6e693d238b18" InformativeScreenshot="9f9088dec0143beca63c66ab34b80fc3" Selector="&lt;webctrl aaname='Returns' parentid='virtualized-list_*' tag='SPAN' innertext='Returns' /&gt;">
+                                                                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="db7b362c-6798-4f42-b558-6e693d238b18" InformativeScreenshot="96dcee925933f2cb01d7d8a739df6501" Selector="&lt;webctrl aaname='Returns' tag='SPAN' innertext='Returns' /&gt;">
                                                                                         <ui:Target.TimeoutMS>
                                                                                           <InArgument x:TypeArguments="x:Int32" />
                                                                                         </ui:Target.TimeoutMS>
@@ -3603,31 +3288,31 @@
                                                                               </ui:BrowserScope.Body>
                                                                               <sap:WorkflowViewStateService.ViewState>
                                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                                 </scg:Dictionary>
                                                                               </sap:WorkflowViewStateService.ViewState>
                                                                             </ui:BrowserScope>
                                                                           </TryCatch.Try>
                                                                           <TryCatch.Catches>
-                                                                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="440,324.571428571429" sap2010:WorkflowViewState.IdRef="Catch`1_15">
+                                                                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="438.857142857143,22.8571428571429" sap2010:WorkflowViewState.IdRef="Catch`1_15">
                                                                               <sap:WorkflowViewStateService.ViewState>
                                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                                 </scg:Dictionary>
                                                                               </sap:WorkflowViewStateService.ViewState>
                                                                               <ActivityAction x:TypeArguments="s:Exception">
                                                                                 <ActivityAction.Argument>
-                                                                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                                                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="Nothing" />
                                                                                 </ActivityAction.Argument>
-                                                                                <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser - Click_Returns_Folder" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="BrowserScope_18" InformativeScreenshot="b51116f96f469cf2a8a220b0b4297975">
+                                                                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Click_Returns_Folder" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="BrowserScope_21" InformativeScreenshot="7f1d8cb25374e78ec5001a831beadbc8" Selector="&lt;html app='msedge.exe' title='Document Management Service - Permit Library *' /&gt;">
                                                                                   <ui:BrowserScope.Body>
                                                                                     <ActivityAction x:TypeArguments="x:Object">
                                                                                       <ActivityAction.Argument>
                                                                                         <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                                                                                       </ActivityAction.Argument>
-                                                                                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Returns' Button" sap:VirtualizedContainerService.HintSize="334.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="Click_22" KeyModifiers="None" MouseButton="BTN_LEFT">
+                                                                                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Returns' Button" sap:VirtualizedContainerService.HintSize="334.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="Click_23" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                                                                                         <ui:Click.CursorPosition>
                                                                                           <ui:CursorPosition Position="Center">
                                                                                             <ui:CursorPosition.OffsetX>
@@ -3639,7 +3324,7 @@
                                                                                           </ui:CursorPosition>
                                                                                         </ui:Click.CursorPosition>
                                                                                         <ui:Click.Target>
-                                                                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="db7b362c-6798-4f42-b558-6e693d238b18" InformativeScreenshot="9f9088dec0143beca63c66ab34b80fc3" Selector="&lt;webctrl tag='BUTTON' innertext='Returns' /&gt;">
+                                                                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="db7b362c-6798-4f42-b558-6e693d238b18" InformativeScreenshot="96dcee925933f2cb01d7d8a739df6501" Selector="&lt;webctrl aaname='Returns' parentid='virtualized-list_4_page-0_188' tag='SPAN' /&gt;">
                                                                                             <ui:Target.TimeoutMS>
                                                                                               <InArgument x:TypeArguments="x:Int32" />
                                                                                             </ui:Target.TimeoutMS>
@@ -3651,127 +3336,17 @@
                                                                                       </ui:Click>
                                                                                     </ActivityAction>
                                                                                   </ui:BrowserScope.Body>
+                                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                                    </scg:Dictionary>
+                                                                                  </sap:WorkflowViewStateService.ViewState>
                                                                                 </ui:BrowserScope>
                                                                               </ActivityAction>
                                                                             </Catch>
                                                                           </TryCatch.Catches>
                                                                         </TryCatch>
-                                                                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="518.857142857143,368.571428571429" sap2010:WorkflowViewState.IdRef="CommentOut_14">
-                                                                          <ui:CommentOut.Body>
-                                                                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="482.285714285714,289.142857142857" sap2010:WorkflowViewState.IdRef="Sequence_258">
-                                                                              <sap:WorkflowViewStateService.ViewState>
-                                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                </scg:Dictionary>
-                                                                              </sap:WorkflowViewStateService.ViewState>
-                                                                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434.285714285714,196" sap2010:WorkflowViewState.IdRef="TryCatch_6">
-                                                                                <TryCatch.Try>
-                                                                                  <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468.571428571429,397.142857142857" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_8" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                                    <usa:SharepointApplicationScope.Body>
-                                                                                      <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                                                                                        <ActivityAction.Argument>
-                                                                                          <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                                                                                        </ActivityAction.Argument>
-                                                                                        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Click_Returns_Folder" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="BrowserScope_7" InformativeScreenshot="7f1d8cb25374e78ec5001a831beadbc8" Selector="&lt;html app='msedge.exe' title='Document Management Service - Permit Library *' /&gt;">
-                                                                                          <ui:BrowserScope.Body>
-                                                                                            <ActivityAction x:TypeArguments="x:Object">
-                                                                                              <ActivityAction.Argument>
-                                                                                                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                              </ActivityAction.Argument>
-                                                                                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Returns' Button" sap:VirtualizedContainerService.HintSize="334.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="Click_17" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
-                                                                                                <ui:Click.CursorPosition>
-                                                                                                  <ui:CursorPosition Position="Center">
-                                                                                                    <ui:CursorPosition.OffsetX>
-                                                                                                      <InArgument x:TypeArguments="x:Int32" />
-                                                                                                    </ui:CursorPosition.OffsetX>
-                                                                                                    <ui:CursorPosition.OffsetY>
-                                                                                                      <InArgument x:TypeArguments="x:Int32" />
-                                                                                                    </ui:CursorPosition.OffsetY>
-                                                                                                  </ui:CursorPosition>
-                                                                                                </ui:Click.CursorPosition>
-                                                                                                <ui:Click.Target>
-                                                                                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="db7b362c-6798-4f42-b558-6e693d238b18" InformativeScreenshot="9f9088dec0143beca63c66ab34b80fc3" Selector="&lt;webctrl aaname='Returns' parentid='virtualized-list_*' tag='SPAN' innertext='Returns' /&gt;">
-                                                                                                    <ui:Target.TimeoutMS>
-                                                                                                      <InArgument x:TypeArguments="x:Int32" />
-                                                                                                    </ui:Target.TimeoutMS>
-                                                                                                    <ui:Target.WaitForReady>
-                                                                                                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                                                                    </ui:Target.WaitForReady>
-                                                                                                  </ui:Target>
-                                                                                                </ui:Click.Target>
-                                                                                              </ui:Click>
-                                                                                            </ActivityAction>
-                                                                                          </ui:BrowserScope.Body>
-                                                                                        </ui:BrowserScope>
-                                                                                      </ActivityAction>
-                                                                                    </usa:SharepointApplicationScope.Body>
-                                                                                  </usa:SharepointApplicationScope>
-                                                                                </TryCatch.Try>
-                                                                                <TryCatch.Catches>
-                                                                                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22.8571428571429" sap2010:WorkflowViewState.IdRef="Catch`1_4">
-                                                                                    <sap:WorkflowViewStateService.ViewState>
-                                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                                                      </scg:Dictionary>
-                                                                                    </sap:WorkflowViewStateService.ViewState>
-                                                                                    <ActivityAction x:TypeArguments="s:Exception">
-                                                                                      <ActivityAction.Argument>
-                                                                                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
-                                                                                      </ActivityAction.Argument>
-                                                                                      <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468.571428571429,397.142857142857" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_9" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                                        <usa:SharepointApplicationScope.Body>
-                                                                                          <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                                                                                            <ActivityAction.Argument>
-                                                                                              <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                                                                                            </ActivityAction.Argument>
-                                                                                            <ui:BrowserScope SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" BrowserType="Edge" DisplayName="Attach DMS Browser - Click_Returns_Folder" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="BrowserScope_8" InformativeScreenshot="b51116f96f469cf2a8a220b0b4297975">
-                                                                                              <ui:BrowserScope.Body>
-                                                                                                <ActivityAction x:TypeArguments="x:Object">
-                                                                                                  <ActivityAction.Argument>
-                                                                                                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                                  </ActivityAction.Argument>
-                                                                                                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Returns' Button" sap:VirtualizedContainerService.HintSize="334.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="Click_18" KeyModifiers="None" MouseButton="BTN_LEFT">
-                                                                                                    <ui:Click.CursorPosition>
-                                                                                                      <ui:CursorPosition Position="Center">
-                                                                                                        <ui:CursorPosition.OffsetX>
-                                                                                                          <InArgument x:TypeArguments="x:Int32" />
-                                                                                                        </ui:CursorPosition.OffsetX>
-                                                                                                        <ui:CursorPosition.OffsetY>
-                                                                                                          <InArgument x:TypeArguments="x:Int32" />
-                                                                                                        </ui:CursorPosition.OffsetY>
-                                                                                                      </ui:CursorPosition>
-                                                                                                    </ui:Click.CursorPosition>
-                                                                                                    <ui:Click.Target>
-                                                                                                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="db7b362c-6798-4f42-b558-6e693d238b18" InformativeScreenshot="9f9088dec0143beca63c66ab34b80fc3" Selector="&lt;webctrl tag='BUTTON' innertext='Returns' /&gt;">
-                                                                                                        <ui:Target.TimeoutMS>
-                                                                                                          <InArgument x:TypeArguments="x:Int32" />
-                                                                                                        </ui:Target.TimeoutMS>
-                                                                                                        <ui:Target.WaitForReady>
-                                                                                                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                                                                        </ui:Target.WaitForReady>
-                                                                                                      </ui:Target>
-                                                                                                    </ui:Click.Target>
-                                                                                                  </ui:Click>
-                                                                                                </ActivityAction>
-                                                                                              </ui:BrowserScope.Body>
-                                                                                            </ui:BrowserScope>
-                                                                                          </ActivityAction>
-                                                                                        </usa:SharepointApplicationScope.Body>
-                                                                                        <sap:WorkflowViewStateService.ViewState>
-                                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                                                          </scg:Dictionary>
-                                                                                        </sap:WorkflowViewStateService.ViewState>
-                                                                                      </usa:SharepointApplicationScope>
-                                                                                    </ActivityAction>
-                                                                                  </Catch>
-                                                                                </TryCatch.Catches>
-                                                                              </TryCatch>
-                                                                            </Sequence>
-                                                                          </ui:CommentOut.Body>
-                                                                        </ui:CommentOut>
                                                                       </Sequence>
                                                                       <FlowStep.Next>
                                                                         <FlowStep x:Name="__ReferenceID81" sap2010:WorkflowViewState.IdRef="FlowStep_2">
@@ -3883,147 +3458,79 @@
                                                                                     <FlowStep x:Name="__ReferenceID87">
                                                                                       <sap:WorkflowViewStateService.ViewState>
                                                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                          <av:Point x:Key="ShapeLocation">43.3214285714286,623.071428571429</av:Point>
-                                                                                          <av:Size x:Key="ShapeSize">200,71.4285714285714</av:Size>
+                                                                                          <av:Point x:Key="ShapeLocation">43.321428571429,631.642857142857</av:Point>
+                                                                                          <av:Size x:Key="ShapeSize">200,54.2857142857143</av:Size>
                                                                                           <av:PointCollection x:Key="ConnectorLocation">300,523.5 300,556.5</av:PointCollection>
                                                                                         </scg:Dictionary>
                                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                                      <Sequence DisplayName="Get Permit Folder Number" sap:VirtualizedContainerService.HintSize="200,71.4285714285714" sap2010:WorkflowViewState.IdRef="Sequence_74">
-                                                                                        <sap:WorkflowViewStateService.ViewState>
-                                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                          </scg:Dictionary>
-                                                                                        </sap:WorkflowViewStateService.ViewState>
-                                                                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="518.857142857143,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[&quot;Getting Permit Folder Number&quot;]" />
-                                                                                        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Get Permit Folder Number" sap:VirtualizedContainerService.HintSize="518.857142857143,54.2857142857143" sap2010:WorkflowViewState.IdRef="BrowserScope_19" InformativeScreenshot="6f7d95704c4639acad854a493843d35d" Selector="&lt;html app='msedge.exe' htmlwindowname='{}' title='Document Management Service - *' /&gt;">
-                                                                                          <ui:BrowserScope.Body>
-                                                                                            <ActivityAction x:TypeArguments="x:Object">
-                                                                                              <ActivityAction.Argument>
-                                                                                                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                              </ActivityAction.Argument>
-                                                                                              <Sequence sap:VirtualizedContainerService.HintSize="482.285714285714,563.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_261">
-                                                                                                <sap:WorkflowViewStateService.ViewState>
-                                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                                  </scg:Dictionary>
-                                                                                                </sap:WorkflowViewStateService.ViewState>
-                                                                                                <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Permit Lib" sap:VirtualizedContainerService.HintSize="434.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="GetValue_6">
-                                                                                                  <ui:GetValue.Target>
-                                                                                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c3d4696a-39fe-480d-9ebe-b9e1b9ca9a2e" InformativeScreenshot="f62a1991bf8afe1c1899fa56472ce463" Selector="&lt;webctrl aaname='Permit Library *' parentid='appRoot' tag='SPAN' innertext='Permit Library *' /&gt;">
-                                                                                                      <ui:Target.TimeoutMS>
-                                                                                                        <InArgument x:TypeArguments="x:Int32" />
-                                                                                                      </ui:Target.TimeoutMS>
-                                                                                                      <ui:Target.WaitForReady>
-                                                                                                        <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                                                                      </ui:Target.WaitForReady>
-                                                                                                    </ui:Target>
-                                                                                                  </ui:GetValue.Target>
-                                                                                                  <ui:GetValue.Value>
-                                                                                                    <OutArgument x:TypeArguments="x:String">[strPermitLib]</OutArgument>
-                                                                                                  </ui:GetValue.Value>
-                                                                                                </ui:GetValue>
-                                                                                                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434.285714285714,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_89" Level="Info" Message="[&quot;Get Permit Lib = &quot; + strPermitLib]" />
-                                                                                                <Assign sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_193">
-                                                                                                  <Assign.To>
-                                                                                                    <OutArgument x:TypeArguments="x:String">[strPermitLib]</OutArgument>
-                                                                                                  </Assign.To>
-                                                                                                  <Assign.Value>
-                                                                                                    <InArgument x:TypeArguments="x:String">[strPermitLib.Split(" "c)(2)]</InArgument>
-                                                                                                  </Assign.Value>
-                                                                                                </Assign>
-                                                                                                <Assign sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_194">
-                                                                                                  <Assign.To>
-                                                                                                    <OutArgument x:TypeArguments="x:String">[strPermitLibrary]</OutArgument>
-                                                                                                  </Assign.To>
-                                                                                                  <Assign.Value>
-                                                                                                    <InArgument x:TypeArguments="x:String">["LIB"+strPermitLib]</InArgument>
-                                                                                                  </Assign.Value>
-                                                                                                </Assign>
-                                                                                              </Sequence>
-                                                                                            </ActivityAction>
-                                                                                          </ui:BrowserScope.Body>
-                                                                                          <sap:WorkflowViewStateService.ViewState>
-                                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                                                            </scg:Dictionary>
-                                                                                          </sap:WorkflowViewStateService.ViewState>
-                                                                                        </ui:BrowserScope>
-                                                                                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="518.857142857143,370.285714285714" sap2010:WorkflowViewState.IdRef="CommentOut_16">
-                                                                                          <ui:CommentOut.Body>
-                                                                                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="482.285714285714,290.857142857143" sap2010:WorkflowViewState.IdRef="Sequence_262">
+                                                                                      <ui:CommentOut sap:VirtualizedContainerService.HintSize="200,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_22">
+                                                                                        <ui:CommentOut.Body>
+                                                                                          <Sequence DisplayName="Ignored Activities" sap2010:WorkflowViewState.IdRef="Sequence_274">
+                                                                                            <Sequence DisplayName="Get Permit Folder Number" sap:VirtualizedContainerService.HintSize="200,71.4285714285714" sap2010:WorkflowViewState.IdRef="Sequence_74">
                                                                                               <sap:WorkflowViewStateService.ViewState>
                                                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                                 </scg:Dictionary>
                                                                                               </sap:WorkflowViewStateService.ViewState>
-                                                                                              <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="434.285714285714,197.714285714286" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_11" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                                                <usa:SharepointApplicationScope.Body>
-                                                                                                  <ActivityAction x:TypeArguments="us:SharePointContextInfo">
+                                                                                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="516.571428571429,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_28" Level="Info" Message="[&quot;Getting Permit Folder Number&quot;]" />
+                                                                                              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Get Permit Folder Number" sap:VirtualizedContainerService.HintSize="516.571428571429,710.285714285714" sap2010:WorkflowViewState.IdRef="BrowserScope_19" InformativeScreenshot="6f7d95704c4639acad854a493843d35d" Selector="&lt;html app='msedge.exe' htmlwindowname='{}' title='Document Management Service - *' /&gt;">
+                                                                                                <ui:BrowserScope.Body>
+                                                                                                  <ActivityAction x:TypeArguments="x:Object">
                                                                                                     <ActivityAction.Argument>
-                                                                                                      <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
+                                                                                                      <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                                                                                                     </ActivityAction.Argument>
-                                                                                                    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Get Permit Folder Number" sap:VirtualizedContainerService.HintSize="353.714285714286,54.2857142857143" sap2010:WorkflowViewState.IdRef="BrowserScope_10" InformativeScreenshot="6f7d95704c4639acad854a493843d35d" Selector="&lt;html app='msedge.exe' htmlwindowname='{}' title='Document Management Service - *' /&gt;">
-                                                                                                      <ui:BrowserScope.Body>
-                                                                                                        <ActivityAction x:TypeArguments="x:Object">
-                                                                                                          <ActivityAction.Argument>
-                                                                                                            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                                          </ActivityAction.Argument>
-                                                                                                          <Sequence sap:VirtualizedContainerService.HintSize="482.285714285714,563.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_73">
-                                                                                                            <sap:WorkflowViewStateService.ViewState>
-                                                                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                                              </scg:Dictionary>
-                                                                                                            </sap:WorkflowViewStateService.ViewState>
-                                                                                                            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Permit Lib" sap:VirtualizedContainerService.HintSize="434.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="GetValue_5">
-                                                                                                              <ui:GetValue.Target>
-                                                                                                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c3d4696a-39fe-480d-9ebe-b9e1b9ca9a2e" InformativeScreenshot="f62a1991bf8afe1c1899fa56472ce463" Selector="&lt;webctrl aaname='Permit Library *' parentid='appRoot' tag='SPAN' innertext='Permit Library *' /&gt;">
-                                                                                                                  <ui:Target.TimeoutMS>
-                                                                                                                    <InArgument x:TypeArguments="x:Int32" />
-                                                                                                                  </ui:Target.TimeoutMS>
-                                                                                                                  <ui:Target.WaitForReady>
-                                                                                                                    <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                                                                                  </ui:Target.WaitForReady>
-                                                                                                                </ui:Target>
-                                                                                                              </ui:GetValue.Target>
-                                                                                                              <ui:GetValue.Value>
-                                                                                                                <OutArgument x:TypeArguments="x:String">[strPermitLib]</OutArgument>
-                                                                                                              </ui:GetValue.Value>
-                                                                                                            </ui:GetValue>
-                                                                                                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434.285714285714,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_31" Level="Info" Message="[&quot;Get Permit Lib = &quot; + strPermitLib]" />
-                                                                                                            <Assign sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_80">
-                                                                                                              <Assign.To>
-                                                                                                                <OutArgument x:TypeArguments="x:String">[strPermitLib]</OutArgument>
-                                                                                                              </Assign.To>
-                                                                                                              <Assign.Value>
-                                                                                                                <InArgument x:TypeArguments="x:String">[strPermitLib.Split(" "c)(2)]</InArgument>
-                                                                                                              </Assign.Value>
-                                                                                                            </Assign>
-                                                                                                            <Assign sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_81">
-                                                                                                              <Assign.To>
-                                                                                                                <OutArgument x:TypeArguments="x:String">[strPermitLibrary]</OutArgument>
-                                                                                                              </Assign.To>
-                                                                                                              <Assign.Value>
-                                                                                                                <InArgument x:TypeArguments="x:String">["LIB"+strPermitLib]</InArgument>
-                                                                                                              </Assign.Value>
-                                                                                                            </Assign>
-                                                                                                          </Sequence>
-                                                                                                        </ActivityAction>
-                                                                                                      </ui:BrowserScope.Body>
+                                                                                                    <Sequence sap:VirtualizedContainerService.HintSize="482.285714285714,563.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_261">
                                                                                                       <sap:WorkflowViewStateService.ViewState>
                                                                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                                         </scg:Dictionary>
                                                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                                                    </ui:BrowserScope>
+                                                                                                      <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Permit Lib" sap:VirtualizedContainerService.HintSize="434.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="GetValue_6">
+                                                                                                        <ui:GetValue.Target>
+                                                                                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c3d4696a-39fe-480d-9ebe-b9e1b9ca9a2e" InformativeScreenshot="f62a1991bf8afe1c1899fa56472ce463" Selector="&lt;webctrl aaname='Permit Library *' parentid='appRoot' tag='SPAN' innertext='Permit Library *' /&gt;">
+                                                                                                            <ui:Target.TimeoutMS>
+                                                                                                              <InArgument x:TypeArguments="x:Int32" />
+                                                                                                            </ui:Target.TimeoutMS>
+                                                                                                            <ui:Target.WaitForReady>
+                                                                                                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                                                                            </ui:Target.WaitForReady>
+                                                                                                          </ui:Target>
+                                                                                                        </ui:GetValue.Target>
+                                                                                                        <ui:GetValue.Value>
+                                                                                                          <OutArgument x:TypeArguments="x:String">[strPermitLib]</OutArgument>
+                                                                                                        </ui:GetValue.Value>
+                                                                                                      </ui:GetValue>
+                                                                                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434.285714285714,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_89" Level="Info" Message="[&quot;Get Permit Lib = &quot; + strPermitLib]" />
+                                                                                                      <Assign sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_193">
+                                                                                                        <Assign.To>
+                                                                                                          <OutArgument x:TypeArguments="x:String">[strPermitLib]</OutArgument>
+                                                                                                        </Assign.To>
+                                                                                                        <Assign.Value>
+                                                                                                          <InArgument x:TypeArguments="x:String">[strPermitLib.Split(" "c)(2)]</InArgument>
+                                                                                                        </Assign.Value>
+                                                                                                      </Assign>
+                                                                                                      <Assign sap:VirtualizedContainerService.HintSize="434.285714285714,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_194">
+                                                                                                        <Assign.To>
+                                                                                                          <OutArgument x:TypeArguments="x:String">[strPermitLibrary]</OutArgument>
+                                                                                                        </Assign.To>
+                                                                                                        <Assign.Value>
+                                                                                                          <InArgument x:TypeArguments="x:String">["LIB"+strPermitLib]</InArgument>
+                                                                                                        </Assign.Value>
+                                                                                                      </Assign>
+                                                                                                    </Sequence>
                                                                                                   </ActivityAction>
-                                                                                                </usa:SharepointApplicationScope.Body>
-                                                                                              </usa:SharepointApplicationScope>
+                                                                                                </ui:BrowserScope.Body>
+                                                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                                                  </scg:Dictionary>
+                                                                                                </sap:WorkflowViewStateService.ViewState>
+                                                                                              </ui:BrowserScope>
                                                                                             </Sequence>
-                                                                                          </ui:CommentOut.Body>
-                                                                                        </ui:CommentOut>
-                                                                                      </Sequence>
+                                                                                          </Sequence>
+                                                                                        </ui:CommentOut.Body>
+                                                                                      </ui:CommentOut>
                                                                                     </FlowStep>
                                                                                   </FlowDecision.True>
                                                                                   <FlowDecision.False>
@@ -4081,7 +3588,7 @@
                                                                           </ActivityAction.Argument>
                                                                           <ui:UiElementExists DisplayName="Element 'Permit Library' Exists" Exists="[boolPermitFolder]" sap:VirtualizedContainerService.HintSize="334.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="UiElementExists_12">
                                                                             <ui:UiElementExists.Target>
-                                                                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a15bacd9-f5b1-43f2-b12b-b3a803976b4b" InformativeScreenshot="ffdcf04bb8b390e01b72bbdfbb0cbcde" Selector="&lt;webctrl aaname='Permit Library*' parentid='appRoot' tag='BUTTON' type='button' innertext='Permit Library*' /&gt;">
+                                                                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a15bacd9-f5b1-43f2-b12b-b3a803976b4b" InformativeScreenshot="ffdcf04bb8b390e01b72bbdfbb0cbcde" Selector="&lt;webctrl aaname='Permit Library *' parentid='appRoot' tag='SPAN' /&gt;">
                                                                                 <ui:Target.TimeoutMS>
                                                                                   <InArgument x:TypeArguments="x:Int32" />
                                                                                 </ui:Target.TimeoutMS>
@@ -4094,53 +3601,6 @@
                                                                         </ActivityAction>
                                                                       </ui:BrowserScope.Body>
                                                                     </ui:BrowserScope>
-                                                                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434.285714285714,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_13">
-                                                                      <ui:CommentOut.Body>
-                                                                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="516.571428571429,490.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_257">
-                                                                          <sap:WorkflowViewStateService.ViewState>
-                                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                            </scg:Dictionary>
-                                                                          </sap:WorkflowViewStateService.ViewState>
-                                                                          <usa:SharepointApplicationScope AzureApplicationID="{x:Null}" ClientContext="{x:Null}" ClientId="{x:Null}" ClientSecret="{x:Null}" LoginTimeout="{x:Null}" Password="{x:Null}" AzureAppPermissions="None" DisplayName="Sharepoint application scope" sap:VirtualizedContainerService.HintSize="468.571428571429,397.142857142857" sap2010:WorkflowViewState.IdRef="SharepointApplicationScope_7" PlatformType="Online" QueryGrouping="False" ResetCredentials="False" SecurePassword="[strDMSPassword]" SharePointInstanceType="Online" URL="[io_Config(&quot;DMSHomeUrl&quot;).ToString]" UserName="[DMSUsername]">
-                                                                            <usa:SharepointApplicationScope.Body>
-                                                                              <ActivityAction x:TypeArguments="us:SharePointContextInfo">
-                                                                                <ActivityAction.Argument>
-                                                                                  <DelegateInArgument x:TypeArguments="us:SharePointContextInfo" Name="SharePointContextInfoTag" />
-                                                                                </ActivityAction.Argument>
-                                                                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Check_For_Permit_Number_Folder" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="BrowserScope_6" InformativeScreenshot="7f1d8cb25374e78ec5001a831beadbc8" Selector="&lt;html app='msedge.exe' title='Document Management Service - *' /&gt;" UiBrowser="[browserDMS]">
-                                                                                  <ui:BrowserScope.Body>
-                                                                                    <ActivityAction x:TypeArguments="x:Object">
-                                                                                      <ActivityAction.Argument>
-                                                                                        <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
-                                                                                      </ActivityAction.Argument>
-                                                                                      <ui:UiElementExists DisplayName="Element 'Permit Library' Exists" Exists="[boolPermitFolder]" sap:VirtualizedContainerService.HintSize="334.285714285714,106.857142857143" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
-                                                                                        <ui:UiElementExists.Target>
-                                                                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a15bacd9-f5b1-43f2-b12b-b3a803976b4b" InformativeScreenshot="ffdcf04bb8b390e01b72bbdfbb0cbcde" Selector="&lt;webctrl aaname='Permit Library*' parentid='appRoot' tag='BUTTON' type='button' innertext='Permit Library*' /&gt;">
-                                                                                            <ui:Target.TimeoutMS>
-                                                                                              <InArgument x:TypeArguments="x:Int32" />
-                                                                                            </ui:Target.TimeoutMS>
-                                                                                            <ui:Target.WaitForReady>
-                                                                                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                                                                                            </ui:Target.WaitForReady>
-                                                                                          </ui:Target>
-                                                                                        </ui:UiElementExists.Target>
-                                                                                      </ui:UiElementExists>
-                                                                                    </ActivityAction>
-                                                                                  </ui:BrowserScope.Body>
-                                                                                </ui:BrowserScope>
-                                                                              </ActivityAction>
-                                                                            </usa:SharepointApplicationScope.Body>
-                                                                          </usa:SharepointApplicationScope>
-                                                                        </Sequence>
-                                                                      </ui:CommentOut.Body>
-                                                                      <sap:WorkflowViewStateService.ViewState>
-                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                                        </scg:Dictionary>
-                                                                      </sap:WorkflowViewStateService.ViewState>
-                                                                    </ui:CommentOut>
                                                                   </Sequence>
                                                                   <FlowStep.Next>
                                                                     <x:Reference>__ReferenceID84</x:Reference>
@@ -4178,7 +3638,7 @@
                                                                           <av:Size x:Key="ShapeSize">200,71.4285714285714</av:Size>
                                                                         </scg:Dictionary>
                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                      <Sequence DisplayName="DMS API" sap:VirtualizedContainerService.HintSize="200,71.4285714285714" sap2010:WorkflowViewState.IdRef="Sequence_210">
+                                                                      <Sequence DisplayName="DMS API" sap:VirtualizedContainerService.HintSize="716.571428571429,2955.42857142857" sap2010:WorkflowViewState.IdRef="Sequence_210">
                                                                         <sap:WorkflowViewStateService.ViewState>
                                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4192,13 +3652,13 @@
                                                                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                             </scg:Dictionary>
                                                                           </sap:WorkflowViewStateService.ViewState>
-                                                                          <Sequence x:Key="Internal Only" sap:VirtualizedContainerService.HintSize="699.428571428571,4265.14285714286" sap2010:WorkflowViewState.IdRef="Sequence_76">
+                                                                          <Sequence x:Key="Internal Only" sap:VirtualizedContainerService.HintSize="699.428571428571,68" sap2010:WorkflowViewState.IdRef="Sequence_76">
                                                                             <Sequence.Variables>
                                                                               <Variable x:TypeArguments="sd1:DataTable" Name="dtFileMetadata" />
                                                                             </Sequence.Variables>
                                                                             <sap:WorkflowViewStateService.ViewState>
                                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                               </scg:Dictionary>
                                                                             </sap:WorkflowViewStateService.ViewState>
@@ -4213,7 +3673,7 @@
                                                                                 <InArgument x:TypeArguments="x:String">[strWorkingDirectory.Replace("Email.eml", "Return - Waste return Correspondence "+ strReturnPeriodForRename + " " + strReturnPeriodYear + " - Email and Submission"+".eml")]</InArgument>
                                                                               </Assign.Value>
                                                                             </Assign>
-                                                                            <Sequence DisplayName="Save Files &amp; Generate Metadata" sap:VirtualizedContainerService.HintSize="651.428571428571,1003.42857142857" sap2010:WorkflowViewState.IdRef="Sequence_93">
+                                                                            <Sequence DisplayName="Save Files &amp; Generate Metadata" sap:VirtualizedContainerService.HintSize="651.428571428571,1024" sap2010:WorkflowViewState.IdRef="Sequence_93">
                                                                               <sap:WorkflowViewStateService.ViewState>
                                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4905,13 +4365,13 @@
                                                                                       </ui:MultipleAssign>
                                                                                       <ui:CommentOut DisplayName="Disabled untl further notice" sap:VirtualizedContainerService.HintSize="450.285714285714,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_20">
                                                                                         <ui:CommentOut.Body>
-                                                                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="585.142857142857,952.571428571429" sap2010:WorkflowViewState.IdRef="Sequence_268">
+                                                                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="641.142857142857,952.571428571429" sap2010:WorkflowViewState.IdRef="Sequence_268">
                                                                                             <sap:WorkflowViewStateService.ViewState>
                                                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                               </scg:Dictionary>
                                                                                             </sap:WorkflowViewStateService.ViewState>
-                                                                                            <Assign DisplayName="Convert Dictionary → JObject" sap:VirtualizedContainerService.HintSize="537.142857142857,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_195">
+                                                                                            <Assign DisplayName="Convert Dictionary → JObject" sap:VirtualizedContainerService.HintSize="593.142857142857,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_195">
                                                                                               <Assign.To>
                                                                                                 <OutArgument x:TypeArguments="njl:JObject">[jsonMetaData]</OutArgument>
                                                                                               </Assign.To>
@@ -4919,7 +4379,7 @@
                                                                                                 <InArgument x:TypeArguments="njl:JObject">[JObject.FromObject(dictProperties)]</InArgument>
                                                                                               </Assign.Value>
                                                                                             </Assign>
-                                                                                            <TryCatch DisplayName="Try Upload Document" sap:VirtualizedContainerService.HintSize="537.142857142857,742.285714285714" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+                                                                                            <TryCatch DisplayName="Try Upload Document" sap:VirtualizedContainerService.HintSize="593.142857142857,742.285714285714" sap2010:WorkflowViewState.IdRef="TryCatch_8">
                                                                                               <sap:WorkflowViewStateService.ViewState>
                                                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -5247,19 +4707,19 @@
                                                                             <ActivityAction.Argument>
                                                                               <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
                                                                             </ActivityAction.Argument>
-                                                                            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="617.142857142857,1220" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[item.ToString]">
+                                                                            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="617.142857142857,1133.71428571429" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_3" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[item.ToString]">
                                                                               <ueab:ExcelApplicationCard.Body>
                                                                                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                                                                                   <ActivityAction.Argument>
                                                                                     <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                                                                                   </ActivityAction.Argument>
-                                                                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="582.857142857143,937.714285714286" sap2010:WorkflowViewState.IdRef="Sequence_241">
+                                                                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="582.857142857143,851.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_241">
                                                                                     <sap:WorkflowViewStateService.ViewState>
                                                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                       </scg:Dictionary>
                                                                                     </sap:WorkflowViewStateService.ViewState>
-                                                                                    <Sequence DisplayName="Delete DOB cells, Present Pop Up &amp; Save Changes" sap:VirtualizedContainerService.HintSize="534.857142857143,844.571428571429" sap2010:WorkflowViewState.IdRef="Sequence_238">
+                                                                                    <Sequence DisplayName="Delete DOB cells, Present Pop Up &amp; Save Changes" sap:VirtualizedContainerService.HintSize="534.857142857143,758.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_238">
                                                                                       <Sequence.Variables>
                                                                                         <Variable x:TypeArguments="sd1:DataTable" Name="dtTest" />
                                                                                       </Sequence.Variables>
@@ -5297,24 +4757,6 @@
                                                                                           </uma:Office365ApplicationScope>
                                                                                         </If.Then>
                                                                                       </If>
-                                                                                      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="486.857142857143,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_4">
-                                                                                        <ui:CommentOut.Body>
-                                                                                          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,180.571428571429" sap2010:WorkflowViewState.IdRef="Sequence_240">
-                                                                                            <sap:WorkflowViewStateService.ViewState>
-                                                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                                              </scg:Dictionary>
-                                                                                            </sap:WorkflowViewStateService.ViewState>
-                                                                                            <ui:MessageBox ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" Buttons="Ok" Caption="Check For DOB Data" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="368,87.4285714285714" sap2010:WorkflowViewState.IdRef="MessageBox_10" Text="[&quot;The robot has removed the date of birth's from the table.&quot; + Environment.NewLine + Environment.NewLine + &quot;Please check to ensure there are no other DOB's entered into any other cells on this sheet, and remove them manually if required.&quot; + Environment.NewLine + Environment.NewLine + &quot;Once you are happy there are no DOB's entered, please press OK and the robot will save all changes and continue processing.&quot;]" />
-                                                                                          </Sequence>
-                                                                                        </ui:CommentOut.Body>
-                                                                                        <sap:WorkflowViewStateService.ViewState>
-                                                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                                                          </scg:Dictionary>
-                                                                                        </sap:WorkflowViewStateService.ViewState>
-                                                                                      </ui:CommentOut>
                                                                                       <ui:ExcelSaveWorkbook DisplayName="Save Workbook" sap:VirtualizedContainerService.HintSize="486.857142857143,25.1428571428571" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_3" />
                                                                                     </Sequence>
                                                                                   </Sequence>
@@ -6496,7 +5938,7 @@
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                     </ActivityAction.Argument>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="482.285714285714,305.142857142857" sap2010:WorkflowViewState.IdRef="Sequence_228">
+                                    <Sequence sap:VirtualizedContainerService.HintSize="482.285714285714,307.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_228">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
