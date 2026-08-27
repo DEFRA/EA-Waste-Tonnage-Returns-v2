@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="SetTransactionStatus___Sequence" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:l="clr-namespace:Logging;assembly=Logging" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="clr-namespace:Pop_Ups;assembly=Pop Ups" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Diagnostics;assembly=System" xmlns:sn="clr-namespace:System.Net;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="SetTransactionStatus___Sequence" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:l="clr-namespace:Logging;assembly=Logging" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="clr-namespace:Pop_Ups;assembly=Pop Ups" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Diagnostics;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_arrCaseID" Type="InArgument(s:String[])" />
     <x:Property Name="in_arrExitPoint" Type="InArgument(s:Int32[])" />
@@ -14,10 +14,11 @@
     <x:Property Name="in_strDMSPassword" Type="InArgument(ss:SecureString)" />
     <x:Property Name="in_strDMSUsername" Type="InArgument(x:String)" />
     <x:Property Name="in_browserDMS" Type="InArgument(ui:Browser)" />
-    <x:Property Name="in_credExchangeCredentials" Type="InArgument(sn:NetworkCredential)" />
     <x:Property Name="in_TransactionItem" Type="InArgument(umm:Office365Message)" />
     <x:Property Name="in_strExceptionType" Type="InArgument(x:String)" />
     <x:Property Name="in_exceptionCurrent" Type="InArgument(s:Exception)" />
+    <x:Property Name="in_strSecret" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="in_strAppID" Type="InArgument(x:String)" />
   </x:Members>
   <this:SetTransactionStatus___Sequence.in_strDMSPassword>
     <InArgument x:TypeArguments="ss:SecureString" />
@@ -34,7 +35,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1306.85714285714,1489.14285714286</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1475.42857142857,1489.14285714286</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SetTransactionStatus___Sequence_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -145,7 +146,6 @@
       <AssemblyReference>Microsoft.SharePoint.Client.Runtime</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:Annotation.AnnotationText="Set and log the transaction's status along with extra log fields. &#xA;There can be three possible statuses: Success, Business Exception and System Exception.&#xA;&#xA;Business Rule Exception characterizes an irregular situation according to the process's rules and prevents the transaction to be processed. The transaction is not retried in this case, since the result will be the same until the problem that causes the exception is solved.&#xA;For example, it can be considered a BusinessRuleException if a process expects to read an email's attachment, but the sender didn't attach any file. In this case, immediate retries of the transaction will not yield a different result.&#xA;&#xA;On the other hand, system exceptions are characterized by exceptions whose types are different than BusinessRuleException. When this kind of exception happens, the transaction item can be retried after closing and reopening the applications involved in the process. The rationale behind this is that the exception was caused by a problem in the applications, which might be solved by restarting them.&#xA;&#xA;If Orchestrator queues are the source of transactions, the Set Transaction Status activity is used to update the status. In addition, the retry mechanism is also implemented by Orchestrator.&#xA;&#xA;If Orchestrator queues are not used, the status can be set, for example, by writing to a specific column in a spreadsheet. In such cases, the retry mechanism is covered by the framework and the number of retries is defined in the configuration file.&#xA;&#xA;At the end, io_TransactionNumber is incremented, which makes the framework get the next transaction to be processed." DisplayName="Set Transaction Status" sap:VirtualizedContainerService.HintSize="769.142857142857,1424" sap2010:WorkflowViewState.IdRef="Flowchart_1">
@@ -166,10 +166,7 @@
     <Flowchart.StartNode>
       <x:Reference>__ReferenceID6</x:Reference>
     </Flowchart.StartNode>
-    <FlowDecision x:Name="__ReferenceID5" DisplayName="Success" sap:VirtualizedContainerService.HintSize="69.7142857142857,86.8571428571429" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
-      <FlowDecision.Condition>
-        <mva:VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="in_strExceptionType.Contains(&quot;Successful&quot;) And in_BusinessException Is Nothing And in_SystemException Is Nothing" />
-      </FlowDecision.Condition>
+    <FlowDecision x:Name="__ReferenceID5" Condition="[in_strExceptionType.Contains(&quot;Successful&quot;) And in_BusinessException Is Nothing And in_SystemException Is Nothing]" DisplayName="Success" sap:VirtualizedContainerService.HintSize="69.7142857142857,86.8571428571429" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -255,7 +252,7 @@
                 </l:Log_Case>
               </If.Else>
             </If>
-            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_credExchangeCredentials.UserName]" ApplicationSecret="[in_credExchangeCredentials.Password]" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="521.142857142857,230.857142857143" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_2" OAuthApplication="UiPath" Services="Mail" Tenant="[io_Config(&quot;TenantID&quot;).ToString]">
+            <uma:Office365ApplicationScope ApplicationSecret="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_strAppID]" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="521.142857142857,230.857142857143" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_2" OAuthApplication="UiPath" SecureApplicationSecret="[in_strSecret]" Services="Mail" Tenant="[io_Config(&quot;TenantID&quot;).ToString]">
               <uma:Office365ApplicationScope.Body>
                 <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                   <ActivityAction.Argument>
@@ -290,7 +287,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                         </ActivityAction.Argument>
-                        <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="284.571428571429,82.2857142857143" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[item]" />
+                        <ui:Delete ContinueOnError="{x:Null}" ResourceFile="{x:Null}" sap:VirtualizedContainerService.HintSize="284.571428571429,82.2857142857143" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[item]" />
                       </ActivityAction>
                     </ui:ForEach.Body>
                   </ui:ForEach>
@@ -368,10 +365,7 @@
         </FlowStep>
       </FlowDecision.True>
       <FlowDecision.False>
-        <FlowDecision x:Name="__ReferenceID1" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="106.285714285714,86.8571428571429" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-          <FlowDecision.Condition>
-            <mva:VisualBasicValue x:TypeArguments="x:Boolean" DisplayName="Visual basic value" ExpressionText="(in_strExceptionType.Contains(&quot;Business Exception&quot;)) AND (in_BusinessException isnot Nothing)" />
-          </FlowDecision.Condition>
+        <FlowDecision x:Name="__ReferenceID1" Condition="[(in_strExceptionType.Contains(&quot;Business Exception&quot;)) AND (in_BusinessException isnot Nothing)]" DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="106.285714285714,86.8571428571429" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -419,7 +413,7 @@
                     </Sequence>
                   </ui:CommentOut.Body>
                 </ui:CommentOut>
-                <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_credExchangeCredentials.UserName]" ApplicationSecret="[in_credExchangeCredentials.Password]" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="561.714285714286,230.857142857143" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_3" OAuthApplication="UiPath" Services="Mail" Tenant="[io_Config(&quot;TenantID&quot;).ToString]">
+                <uma:Office365ApplicationScope ApplicationSecret="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_strAppID]" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="561.714285714286,230.857142857143" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_3" OAuthApplication="UiPath" SecureApplicationSecret="[in_strSecret]" Services="Mail" Tenant="[io_Config(&quot;TenantID&quot;).ToString]">
                   <uma:Office365ApplicationScope.Body>
                     <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                       <ActivityAction.Argument>
@@ -469,7 +463,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="365.714285714286,115.428571428571" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow" sap:VirtualizedContainerService.HintSize="334.285714285714,115.428571428571" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\CloseAllApplications.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">[io_Config]</InOutArgument>
                         <InArgument x:TypeArguments="ss:SecureString" x:Key="in_strDMSPassword">[in_strDMSPassword]</InArgument>
@@ -490,7 +484,7 @@
                         <ActivityAction.Argument>
                           <DelegateInArgument x:TypeArguments="s:Exception" Name="Exception" />
                         </ActivityAction.Argument>
-                        <Sequence DisplayName="Close applications" sap:VirtualizedContainerService.HintSize="485.714285714286,569.142857142857" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                        <Sequence DisplayName="Close applications" sap:VirtualizedContainerService.HintSize="486.857142857143,577.714285714286" sap2010:WorkflowViewState.IdRef="Sequence_22">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -558,7 +552,7 @@
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                             </ActivityAction.Argument>
-                            <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="284.571428571429,82.2857142857143" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[item]" />
+                            <ui:Delete ContinueOnError="{x:Null}" ResourceFile="{x:Null}" sap:VirtualizedContainerService.HintSize="284.571428571429,82.2857142857143" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[item]" />
                           </ActivityAction>
                         </ui:ForEach.Body>
                       </ui:ForEach>
@@ -617,13 +611,13 @@
                 </Assign>
                 <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="566.857142857143,54.2857142857143" sap2010:WorkflowViewState.IdRef="CommentOut_4">
                   <ui:CommentOut.Body>
-                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="427.428571428571,208.571428571429" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="416,208.571428571429" sap2010:WorkflowViewState.IdRef="Sequence_23">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke RetryCurrentTransaction workflow" sap:VirtualizedContainerService.HintSize="379.428571428571,115.428571428571" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\RetryCurrentTransaction.xaml">
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke RetryCurrentTransaction workflow" sap:VirtualizedContainerService.HintSize="368,115.428571428571" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\RetryCurrentTransaction.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[io_Config]</InArgument>
                           <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">[io_RetryNumber]</InOutArgument>
@@ -650,7 +644,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch.Try>
-                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="340,115.428571428571" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
+                    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334.285714285714,115.428571428571" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
                         <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[String.Format(io_Config("ExScreenshotsFolderPath").ToString, io_Config("Username").ToString)]</InArgument>
                         <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath" />
@@ -743,7 +737,7 @@
                     </Sequence>
                   </ui:CommentOut.Body>
                 </ui:CommentOut>
-                <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_credExchangeCredentials.UserName]" ApplicationSecret="[in_credExchangeCredentials.Password]" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="566.857142857143,230.857142857143" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_4" OAuthApplication="UiPath" Services="Mail" Tenant="[io_Config(&quot;TenantID&quot;).ToString]">
+                <uma:Office365ApplicationScope ApplicationSecret="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_strAppID]" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="566.857142857143,230.857142857143" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_4" OAuthApplication="UiPath" SecureApplicationSecret="[in_strSecret]" Services="Mail" Tenant="[io_Config(&quot;TenantID&quot;).ToString]">
                   <uma:Office365ApplicationScope.Body>
                     <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                       <ActivityAction.Argument>
@@ -887,7 +881,7 @@
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                             </ActivityAction.Argument>
-                            <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="284.571428571429,82.2857142857143" sap2010:WorkflowViewState.IdRef="Delete_3" Path="[item]" />
+                            <ui:Delete ContinueOnError="{x:Null}" ResourceFile="{x:Null}" sap:VirtualizedContainerService.HintSize="284.571428571429,82.2857142857143" sap2010:WorkflowViewState.IdRef="Delete_3" Path="[item]" />
                           </ActivityAction>
                         </ui:ForEach.Body>
                       </ui:ForEach>

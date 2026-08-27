@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetTransactionData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="clr-namespace:Pop_Ups;assembly=Pop Ups" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sn="clr-namespace:System.Net;assembly=System" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetTransactionData" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mg="clr-namespace:Microsoft.Graph;assembly=Microsoft.Graph" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:p="clr-namespace:Pop_Ups;assembly=Pop Ups" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sn="clr-namespace:System.Net;assembly=System" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umam="clr-namespace:UiPath.MicrosoftOffice365.Activities.Mail;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umm="clr-namespace:UiPath.MicrosoftOffice365.Models;assembly=UiPath.MicrosoftOffice365" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Sequential counter of transaction items." Name="in_TransactionNumber" Type="InArgument(x:Int32)" />
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="out_TransactionItem" Type="OutArgument(umm:Office365Message)" />
@@ -6,7 +6,8 @@
     <x:Property Name="in_strProcessType" Type="InArgument(x:String)" />
     <x:Property Name="in_boolContinue" Type="InArgument(x:Boolean)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="io_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_credExchangeCredentials" Type="InArgument(sn:NetworkCredential)" />
+    <x:Property Name="in_strSecret" Type="InArgument(ss:SecureString)" />
+    <x:Property Name="in_strAppID" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -120,7 +121,6 @@
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Get a transaction item from a specified source (e.g., Orchestrator queues, spreadsheets, databases, mailboxes or web APIs). &#xA;&#xA;This framework is setup by default to look for an Outlook MailMessage from a config-specified mailbox, this should be changed on a work package basis with out_TransactionItem being set to a single transaction from whatever source is required.&#xA;&#xA;If there are no transaction items remaining, out_TransactionItem should be set to Nothing, which leads to the End Process state. &#xA;&#xA;out_boolLastTransaction should be set to True where it is possible to determine that a transaction is the last in the batch. If this is not possible to derive then changes will need to be made to the &quot;Final Transaction&quot; transition at the framework's parent level. " DisplayName="Get Transaction Data" sap:VirtualizedContainerService.HintSize="1572.57142857143,2501.71428571429" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -136,7 +136,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_credExchangeCredentials.UserName]" ApplicationSecret="[in_credExchangeCredentials.Password]" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1524.57142857143,2273.14285714286" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" Services="Mail" Tenant="[io_Config(&quot;TenantID&quot;).ToString]">
+    <uma:Office365ApplicationScope ApplicationSecret="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_strAppID]" AuthenticationType="ApplicationIdAndSecret" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1524.57142857143,2273.14285714286" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" SecureApplicationSecret="[in_strSecret]" Services="Mail" Tenant="[io_Config(&quot;TenantID&quot;).ToString]">
       <uma:Office365ApplicationScope.Body>
         <ActivityAction x:TypeArguments="mg:GraphServiceClient">
           <ActivityAction.Argument>
