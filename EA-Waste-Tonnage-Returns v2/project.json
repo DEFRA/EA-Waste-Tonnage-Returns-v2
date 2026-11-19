@@ -23,7 +23,7 @@
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "23.10.6.0",
-  "projectVersion": "1.0.8",
+  "projectVersion": "1.0.19",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -51,21 +51,11 @@
     },
     "processOptions": {
       "ignoredFiles": [
-        "Test 2.xaml",
-        "Test Sequence.xaml",
-        "Test.xaml",
-        "DMSGraphTest.xaml"
+        "DMSGraphTest.xaml",
+        "Test Sequence.xaml"
       ]
     },
-    "fileInfoCollection": [
-      {
-        "editingStatus": "InProgress",
-        "testCaseId": "3f2d42f7-d708-4112-99ce-3b03e44a5b2b",
-        "testCaseType": "TestCase",
-        "executionTemplateInvokeIsolated": false,
-        "fileName": "TestCase.xaml"
-      }
-    ],
+    "fileInfoCollection": [],
     "modernBehavior": false,
     "saveToCloud": false
   },
