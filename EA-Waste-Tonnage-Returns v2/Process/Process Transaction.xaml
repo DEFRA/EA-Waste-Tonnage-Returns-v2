@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1240,1115.42857142857</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1458.28571428571,1115.42857142857</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_Transaction_2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -462,6 +462,7 @@
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="753.142857142857,1974.85714285714" sap2010:WorkflowViewState.IdRef="TryCatch_15">
@@ -3107,7 +3108,7 @@
                                                                                                   <av:Size x:Key="ShapeSize">200,54.2857142857143</av:Size>
                                                                                                 </scg:Dictionary>
                                                                                               </sap:WorkflowViewStateService.ViewState>
-                                                                                              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,54.2857142857143" sap2010:WorkflowViewState.IdRef="BrowserScope_15" Selector="&lt;html app='msedge.exe' title='Document Management Service - Search' /&gt;">
+                                                                                              <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="200,54.2857142857143" sap2010:WorkflowViewState.IdRef="BrowserScope_15" InformativeScreenshot="ca3d872708f50bf6ed78f49a0102ede9" Selector="&lt;html app='msedge.exe' title='Document Management Service - Search' /&gt;">
                                                                                                 <ui:BrowserScope.Body>
                                                                                                   <ActivityAction x:TypeArguments="x:Object">
                                                                                                     <ActivityAction.Argument>
@@ -3188,7 +3189,7 @@
                                                                   <av:PointCollection x:Key="ConnectorLocation">305,961.785714285714 305,1011.78571428571</av:PointCollection>
                                                                 </scg:Dictionary>
                                                               </sap:WorkflowViewStateService.ViewState>
-                                                              <Flowchart DisplayName="Try Navigate To Permit Documents Folder" sap:VirtualizedContainerService.HintSize="885.142857142857,879.428571428571" sap2010:WorkflowViewState.IdRef="Flowchart_17">
+                                                              <Flowchart DisplayName="Try Navigate To Permit Documents Folder" sap:VirtualizedContainerService.HintSize="200,54.2857142857143" sap2010:WorkflowViewState.IdRef="Flowchart_17">
                                                                 <Flowchart.Variables>
                                                                   <Variable x:TypeArguments="x:Boolean" Name="boolPermitFolder" />
                                                                   <Variable x:TypeArguments="ui:Window" Name="windowDMS" />
@@ -3306,7 +3307,7 @@
                                                                                 <ActivityAction.Argument>
                                                                                   <DelegateInArgument x:TypeArguments="s:Exception" Name="Nothing" />
                                                                                 </ActivityAction.Argument>
-                                                                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Click_Returns_Folder" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="BrowserScope_21" InformativeScreenshot="7f1d8cb25374e78ec5001a831beadbc8" Selector="&lt;html app='msedge.exe' title='Document Management Service - Permit Library *' /&gt;">
+                                                                                <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Edge" DisplayName="Attach DMS Browser - Click_Returns_Folder" sap:VirtualizedContainerService.HintSize="434.285714285714,253.714285714286" sap2010:WorkflowViewState.IdRef="BrowserScope_21" InformativeScreenshot="7f1d8cb25374e78ec5001a831beadbc8" Selector="&lt;html app='msedge.exe' title='*Permit Library*' /&gt;">
                                                                                   <ui:BrowserScope.Body>
                                                                                     <ActivityAction x:TypeArguments="x:Object">
                                                                                       <ActivityAction.Argument>
@@ -3324,7 +3325,7 @@
                                                                                           </ui:CursorPosition>
                                                                                         </ui:Click.CursorPosition>
                                                                                         <ui:Click.Target>
-                                                                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="db7b362c-6798-4f42-b558-6e693d238b18" InformativeScreenshot="96dcee925933f2cb01d7d8a739df6501" Selector="&lt;webctrl aaname='Returns' parentid='virtualized-list_4_page-0_188' tag='SPAN' /&gt;">
+                                                                                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="db7b362c-6798-4f42-b558-6e693d238b18" InformativeScreenshot="96dcee925933f2cb01d7d8a739df6501" Selector="&lt;webctrl aaname='Returns' parentid='virtualized-list_4_page-0_18*' tag='SPAN' /&gt;">
                                                                                             <ui:Target.TimeoutMS>
                                                                                               <InArgument x:TypeArguments="x:Int32" />
                                                                                             </ui:Target.TimeoutMS>
@@ -3619,7 +3620,7 @@
                                                                       <av:PointCollection x:Key="ConnectorLocation">305,1066.07142857142 305,1113.5</av:PointCollection>
                                                                     </scg:Dictionary>
                                                                   </sap:WorkflowViewStateService.ViewState>
-                                                                  <Flowchart DisplayName="Upload Excel Return To DMS" sap:VirtualizedContainerService.HintSize="634.285714285714,637.142857142857" sap2010:WorkflowViewState.IdRef="Flowchart_18">
+                                                                  <Flowchart DisplayName="Upload Excel Return To DMS" sap:VirtualizedContainerService.HintSize="200,54.2857142857143" sap2010:WorkflowViewState.IdRef="Flowchart_18">
                                                                     <sap:WorkflowViewStateService.ViewState>
                                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -4790,17 +4791,18 @@
                                                                           <av:Size x:Key="ShapeSize">200,71.4285714285714</av:Size>
                                                                         </scg:Dictionary>
                                                                       </sap:WorkflowViewStateService.ViewState>
-                                                                      <Sequence DisplayName="Upload Email To DMS" sap:VirtualizedContainerService.HintSize="200,71.4285714285714" sap2010:WorkflowViewState.IdRef="Sequence_136">
+                                                                      <Sequence DisplayName="Upload Email To DMS" sap:VirtualizedContainerService.HintSize="545.142857142857,868.571428571429" sap2010:WorkflowViewState.IdRef="Sequence_136">
                                                                         <Sequence.Variables>
                                                                           <Variable x:TypeArguments="x:String" Name="strDocumentFilePath" />
+                                                                          <Variable x:TypeArguments="ui:Browser" Name="CloseBrowserDMS" />
                                                                         </Sequence.Variables>
                                                                         <sap:WorkflowViewStateService.ViewState>
                                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                           </scg:Dictionary>
                                                                         </sap:WorkflowViewStateService.ViewState>
-                                                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="739.428571428571,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Attempting to Upload Email to DMS&quot;]" />
-                                                                        <Assign DisplayName="Assign strDocumentFilePath" sap:VirtualizedContainerService.HintSize="739.428571428571,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_130">
+                                                                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="497.142857142857,97.1428571428571" sap2010:WorkflowViewState.IdRef="LogMessage_30" Level="Info" Message="[&quot;Attempting to Upload Email to DMS&quot;]" />
+                                                                        <Assign DisplayName="Assign strDocumentFilePath" sap:VirtualizedContainerService.HintSize="497.142857142857,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_130">
                                                                           <Assign.To>
                                                                             <OutArgument x:TypeArguments="x:String">[strDocumentFilePath]</OutArgument>
                                                                           </Assign.To>
@@ -4808,8 +4810,8 @@
                                                                             <InArgument x:TypeArguments="x:String">[strWorkingDirectory + "Email.eml"]</InArgument>
                                                                           </Assign.Value>
                                                                         </Assign>
-                                                                        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[io_Config(&quot;DMSExcelReturnDisclosureStatus&quot;).ToString]" sap:VirtualizedContainerService.HintSize="739.428571428571,3866.85714285714" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-                                                                          <Sequence x:Key="Internal Only" sap:VirtualizedContainerService.HintSize="699.428571428571,4071.42857142857" sap2010:WorkflowViewState.IdRef="Sequence_115">
+                                                                        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[io_Config(&quot;DMSExcelReturnDisclosureStatus&quot;).ToString]" sap:VirtualizedContainerService.HintSize="497.142857142857,171.428571428571" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                                                                          <Sequence x:Key="Internal Only" sap:VirtualizedContainerService.HintSize="699.428571428571,4066.28571428571" sap2010:WorkflowViewState.IdRef="Sequence_115">
                                                                             <Sequence.Variables>
                                                                               <Variable x:TypeArguments="sd1:DataTable" Name="dtFileMetadata" />
                                                                             </Sequence.Variables>
@@ -4820,7 +4822,7 @@
                                                                               </scg:Dictionary>
                                                                             </sap:WorkflowViewStateService.ViewState>
                                                                             <ui:DeleteFileX DisplayName="Delete File (If Exists)" sap:VirtualizedContainerService.HintSize="651.428571428571,82.2857142857143" sap2010:WorkflowViewState.IdRef="DeleteFileX_3" Path="[strDocumentFilePath.Replace(&quot;Email.eml&quot;, &quot;Return - Waste return Correspondence &quot;+ strReturnPeriodForRename + &quot; &quot; + strReturnPeriodYear + &quot; - Email and Submission&quot;+&quot;.eml&quot;)]" />
-                                                                            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[strDocumentFilePath.Replace(&quot;.eml&quot;, &quot;- Copy.eml&quot;)]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="651.428571428571,165.142857142857" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[strDocumentFilePath]" />
+                                                                            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[strDocumentFilePath.Replace(&quot;.eml&quot;, &quot;- Copy.eml&quot;)]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="651.428571428571,160" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[strDocumentFilePath]" />
                                                                             <ui:RenameFileX DisplayName="Rename File (Internal Email)" FilePath="[strDocumentFilePath.Replace(&quot;.eml&quot;, &quot;- Copy.eml&quot;)]" sap:VirtualizedContainerService.HintSize="651.428571428571,149.142857142857" sap2010:WorkflowViewState.IdRef="RenameFileX_3" KeepExtension="True" NewName="[&quot;Return - Waste return Correspondence &quot;+ strReturnPeriodForRename + &quot; &quot; + strReturnPeriodYear + &quot; - Email and Submission&quot;]" />
                                                                             <Assign sap:VirtualizedContainerService.HintSize="651.428571428571,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_106">
                                                                               <Assign.To>
@@ -5244,7 +5246,7 @@
                                                                               </sap:WorkflowViewStateService.ViewState>
                                                                             </ui:ForEachRow>
                                                                           </Sequence>
-                                                                          <Sequence x:Key="Public Register" DisplayName="Upload Email (Public Register)" sap:VirtualizedContainerService.HintSize="699.428571428571,3649.71428571429" sap2010:WorkflowViewState.IdRef="Sequence_149">
+                                                                          <Sequence x:Key="Public Register" DisplayName="Upload Email (Public Register)" sap:VirtualizedContainerService.HintSize="699.428571428571,3642.28571428571" sap2010:WorkflowViewState.IdRef="Sequence_149">
                                                                             <Sequence.Variables>
                                                                               <Variable x:TypeArguments="sd1:DataTable" Name="dtFileMetadata" />
                                                                             </Sequence.Variables>
@@ -5255,7 +5257,7 @@
                                                                               </scg:Dictionary>
                                                                             </sap:WorkflowViewStateService.ViewState>
                                                                             <ui:DeleteFileX DisplayName="Delete File (If Exists)" sap:VirtualizedContainerService.HintSize="651.428571428571,82.2857142857143" sap2010:WorkflowViewState.IdRef="DeleteFileX_5" Path="[strDocumentFilePath.Replace(&quot;Email.eml&quot;, &quot;Return - Waste return Correspondence &quot;+ strReturnPeriodForRename + &quot; &quot; + strReturnPeriodYear + &quot; - Email and Submission&quot;+&quot;.eml&quot;)]" />
-                                                                            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[strDocumentFilePath.Replace(&quot;.eml&quot;, &quot;- Copy.eml&quot;)]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="651.428571428571,165.142857142857" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="True" Path="[strDocumentFilePath]" />
+                                                                            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[strDocumentFilePath.Replace(&quot;.eml&quot;, &quot;- Copy.eml&quot;)]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="651.428571428571,160" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="True" Path="[strDocumentFilePath]" />
                                                                             <ui:RenameFileX DisplayName="Rename File (Internal Email)" FilePath="[strDocumentFilePath.Replace(&quot;.eml&quot;, &quot;- Copy.eml&quot;)]" sap:VirtualizedContainerService.HintSize="651.428571428571,149.142857142857" sap2010:WorkflowViewState.IdRef="RenameFileX_5" KeepExtension="True" NewName="[&quot;Return - Waste return Correspondence &quot;+ strReturnPeriodForRename + &quot; &quot; + strReturnPeriodYear + &quot; - Email and Submission&quot;]" />
                                                                             <Assign sap:VirtualizedContainerService.HintSize="651.428571428571,85.1428571428571" sap2010:WorkflowViewState.IdRef="Assign_141">
                                                                               <Assign.To>
@@ -5809,24 +5811,24 @@
                                                                             </ui:ForEachRow>
                                                                           </Sequence>
                                                                         </Switch>
-                                                                        <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" Browser="[browserDMS]" DisplayName="Attach Browser" sap:VirtualizedContainerService.HintSize="739.428571428571,227.428571428571" sap2010:WorkflowViewState.IdRef="BrowserScope_20">
+                                                                        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" BrowserType="Edge" DisplayName="Attach Browser 'msedge.exe Document'" sap:VirtualizedContainerService.HintSize="497.142857142857,265.142857142857" sap2010:WorkflowViewState.IdRef="BrowserScope_22" InformativeScreenshot="05dfb548da04e9a4a1b315c0c9895ff9" Selector="&lt;html app='msedge.exe' htmlwindowname='{}' title='Document Management Service - Permit Library * - Returns - All Documents' /&gt;" UiBrowser="[CloseBrowserDMS]">
                                                                           <ui:BrowserScope.Body>
                                                                             <ActivityAction x:TypeArguments="x:Object">
                                                                               <ActivityAction.Argument>
                                                                                 <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                                                                               </ActivityAction.Argument>
-                                                                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,118.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_273">
+                                                                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,118.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_275">
                                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                                   </scg:Dictionary>
                                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                                <ui:CloseTab Browser="[browserDMS]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="368,25.1428571428571" sap2010:WorkflowViewState.IdRef="CloseTab_4" />
+                                                                                <ui:CloseTab Browser="[CloseBrowserDMS]" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="368,25.1428571428571" sap2010:WorkflowViewState.IdRef="CloseTab_5" />
                                                                               </Sequence>
                                                                             </ActivityAction>
                                                                           </ui:BrowserScope.Body>
                                                                         </ui:BrowserScope>
-                                                                        <l:Log_Case IN_strNotes="{x:Null}" in_dblCaseProcessingTime="{x:Null}" DisplayName="Log Case - Local File" sap:VirtualizedContainerService.HintSize="739.428571428571,25.1428571428571" IN_dateCaseEndTime="[Now]" IN_dateCaseStartTime="[in_dateCaseStartTime]" IN_dateCaseTotalTime="[(Now - in_dateCaseStartTime).ToString]" IN_strCaseID="[strPermitNumber]" IN_strFilePath="[in_strWorkLogFilepath]" IN_strOutcome="Success" IN_strUser="[Environment.UserName]" IN_strWorkpackageName="[io_Config(&quot;logF_BusinessProcessName&quot;).ToString]" sap2010:WorkflowViewState.IdRef="Log_Case_5">
+                                                                        <l:Log_Case IN_strNotes="{x:Null}" in_dblCaseProcessingTime="{x:Null}" DisplayName="Log Case - Local File" sap:VirtualizedContainerService.HintSize="497.142857142857,25.1428571428571" IN_dateCaseEndTime="[Now]" IN_dateCaseStartTime="[in_dateCaseStartTime]" IN_dateCaseTotalTime="[(Now - in_dateCaseStartTime).ToString]" IN_strCaseID="[strPermitNumber]" IN_strFilePath="[in_strWorkLogFilepath]" IN_strOutcome="Success" IN_strUser="[Environment.UserName]" IN_strWorkpackageName="[io_Config(&quot;logF_BusinessProcessName&quot;).ToString]" sap2010:WorkflowViewState.IdRef="Log_Case_5">
                                                                           <l:Log_Case.IN_strOutcomeMessage>
                                                                             <InArgument x:TypeArguments="x:String">
                                                                               <Literal x:TypeArguments="x:String" Value="" />
@@ -5938,7 +5940,7 @@
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                     </ActivityAction.Argument>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="482.285714285714,307.428571428571" sap2010:WorkflowViewState.IdRef="Sequence_228">
+                                    <Sequence sap:VirtualizedContainerService.HintSize="482.285714285714,305.142857142857" sap2010:WorkflowViewState.IdRef="Sequence_228">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -6075,7 +6077,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <TryCatch DisplayName="Try Delete Each File In Working Directory" sap:VirtualizedContainerService.HintSize="200,54.2857142857143" sap2010:WorkflowViewState.IdRef="TryCatch_11">
                     <TryCatch.Try>
-                      <Sequence sap:VirtualizedContainerService.HintSize="482.285714285714,550.857142857143" sap2010:WorkflowViewState.IdRef="Sequence_151">
+                      <Sequence sap:VirtualizedContainerService.HintSize="482.285714285714,606.285714285714" sap2010:WorkflowViewState.IdRef="Sequence_151">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="s:String[]" Name="arrFiles" />
                         </Sequence.Variables>
@@ -6093,13 +6095,13 @@
                             <InArgument x:TypeArguments="s:String[]">[System.IO.Directory.GetFiles(strWorkingDirectory)]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Delete Each File In Working Directory" sap:VirtualizedContainerService.HintSize="434.285714285714,211.428571428571" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[arrFiles]">
+                        <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="Delete Each File In Working Directory" sap:VirtualizedContainerService.HintSize="434.285714285714,266.857142857143" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[arrFiles]">
                           <ui:ForEach.Body>
                             <ActivityAction x:TypeArguments="x:String">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                               </ActivityAction.Argument>
-                              <ui:Delete ContinueOnError="{x:Null}" ResourceFile="{x:Null}" sap:VirtualizedContainerService.HintSize="284.571428571429,82.2857142857143" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[item]" />
+                              <ui:Delete ContinueOnError="{x:Null}" ResourceFile="{x:Null}" sap:VirtualizedContainerService.HintSize="284.571428571429,137.714285714286" sap2010:WorkflowViewState.IdRef="Delete_2" Path="[item]" />
                             </ActivityAction>
                           </ui:ForEach.Body>
                         </ui:ForEach>
